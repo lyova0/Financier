@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="start_color">#FDE3E2</color>
     <color name="start_bt_color">#2D3A68</color>
+
+    <color name="text_color">#FFE500</color>
 </resources>
