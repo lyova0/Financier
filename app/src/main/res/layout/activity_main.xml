@@ -12,46 +12,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/financier"
-        android:layout_centerVertical="true"
         android:fontFamily="sans-serif-black"
         android:text="Financier"
         android:padding="20dp"
+        android:layout_marginTop="400dp"
         android:textColor="@color/start_color"
         android:textSize="40dp"
         tools:ignore="UnknownId" />
-
-    <TextView
-        android:id="@+id/financier"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/entrepreneur"
-        android:textColor="@color/start_color"
-        android:textSize="20dp"
-        android:padding="20dp"
-        android:text="Here you can search a financier."/>
-
-    <TextView
-        android:id="@+id/entrepreneur"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/start_bt"
-        android:textColor="@color/start_color"
-        android:textSize="20dp"
-        android:padding="20dp"
-        android:text="Here you can search a entrepreneur."/>
 
     <Button
         android:id="@+id/start_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
+        android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/start_color"
         android:textSize="20dp"
         android:backgroundTint="@color/start_bt_color"
         android:layout_above="@+id/f_bg"
         android:layout_alignParentBottom="true"
-        tools:ignore="NotSibling" />
-
+        tools:ignore="NotSibling"
+        />
 
 </RelativeLayout>

@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Financier"
         tools:targetApi="31">
         <activity
+            android:name=".plus"
+            android:exported="false" />
+        <activity
             android:name=".profile"
             android:exported="false" />
         <activity

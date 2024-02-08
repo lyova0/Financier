@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".plus"
+    android:padding="30dp"
+    android:background="@drawable/plus_bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New post"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/start_bt_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        />
+
+    <EditText
+        android:id="@+id/post_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/start_bt_color"
+        android:hint="Post Name"
+        android:layout_marginTop="280dp"/>
+
+    <EditText
+        android:id="@+id/above_post"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Above post"
+        android:textColor="@color/start_bt_color"
+        android:layout_marginTop="360dp"/>
+
+    <EditText
+        android:id="@+id/hwo_are_you"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/start_bt_color"
+        android:hint="Financier / Entrepreneur"
+        android:layout_marginTop="440dp"/>
+
+    <EditText
+        android:id="@+id/goal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/start_bt_color"
+        android:hint="Your goal"
+        android:layout_marginTop="520dp"/>
+
+    <Button
+        android:id="@+id/new_post_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create the new post"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:backgroundTint="@color/start_bt_color"
+        android:layout_alignParentBottom="true"
+        tools:ignore="NotSibling"
+        />
+
+
+</RelativeLayout>

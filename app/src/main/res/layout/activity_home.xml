@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Home"
     android:background="@drawable/home">
-
     <TextView
         android:id="@+id/welcome_fn"
         android:layout_width="171dp"
