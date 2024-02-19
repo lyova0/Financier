@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "126570092124",
+    "project_id": "financier-e6eb2",
+    "storage_bucket": "financier-e6eb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126570092124:android:aee225d25f7f0226807899",
+        "android_client_info": {
+          "package_name": "com.example.financier"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZBEuaxUUTi6I4lo7ZytbUgWG2Xa0VJfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

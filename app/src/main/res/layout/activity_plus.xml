@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".plus"
-    android:padding="30dp"
+    android:padding="20dp"
     android:background="@drawable/plus_bg">
 
     <TextView
@@ -16,40 +16,48 @@
         android:textStyle="bold"
         android:textColor="@color/start_bt_color"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         />
 
     <EditText
-        android:id="@+id/post_name"
+        android:id="@+id/project_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/start_bt_color"
-        android:hint="Post Name"
-        android:layout_marginTop="280dp"/>
+        android:hint="Project type (Financier / Entrepreneur)"
+        android:layout_marginTop="180dp"/>
 
     <EditText
-        android:id="@+id/above_post"
+        android:id="@+id/project_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Above post"
+        android:hint="Project Name"
         android:textColor="@color/start_bt_color"
-        android:layout_marginTop="360dp"/>
+        android:layout_marginTop="230dp"/>
 
     <EditText
-        android:id="@+id/hwo_are_you"
+        android:id="@+id/summary_of_the_idea"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/start_bt_color"
-        android:hint="Financier / Entrepreneur"
+        android:hint="Summary of the idea"
+        android:layout_marginTop="300dp"/>
+
+    <EditText
+        android:id="@+id/amount_to_be_collected"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/start_bt_color"
+        android:hint="Amount to be collected"
+        android:layout_marginTop="370dp"/>
+
+    <EditText
+        android:id="@+id/full_presentation_of_the_project"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="@color/start_bt_color"
+        android:hint="Full presentation of the project"
         android:layout_marginTop="440dp"/>
-
-    <EditText
-        android:id="@+id/goal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textColor="@color/start_bt_color"
-        android:hint="Your goal"
-        android:layout_marginTop="520dp"/>
 
     <Button
         android:id="@+id/new_post_btn"

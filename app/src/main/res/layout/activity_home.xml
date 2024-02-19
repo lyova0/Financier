@@ -18,6 +18,76 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="15dp"/>
 
+
+
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="200dp"
+                android:background="@drawable/profile_page"/>
+
+
+                <TextView
+                    android:id="@+id/project1_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginLeft="60dp"
+                    android:textColor="@color/start_bt_color"
+                    android:text="Project type"
+                    android:textSize="20dp"/>
+
+
+        <TextView
+            android:id="@+id/project1_name_financier"
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="Project name"
+            android:layout_marginTop="260dp"
+            android:textColor="@color/start_bt_color"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/summary_of_the_idea_financier1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="280dp"
+            android:text="Summary of the idea"
+            android:textColor="@color/start_bt_color" />
+
+        <TextView
+            android:id="@+id/amount_to_be_collected_financier1"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="320dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:text="Amount to be collected"
+            android:textColor="@color/start_bt_color" />
+
+        <Button
+            android:id="@+id/to_learn_more_btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To learn more"
+            android:textSize="20dp"
+            android:layout_marginTop="350dp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/start_bt_color"/>
+
+
+    <Button
+        android:id="@+id/update_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="133dp"
+        android:layout_marginBottom="199dp"
+        android:text="update" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"

@@ -4,46 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".profile"
-    android:background="@drawable/profile">
-
-    <ImageView
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/profile_page"/>
-
+    tools:context=".Home"
+    android:background="@drawable/home">
     <TextView
-        android:layout_width="200dp"
+        android:id="@+id/welcome_fn"
+        android:layout_width="171dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="100dp"
-        android:text="This is your account for Financier"
+        android:fontFamily="sans-serif-black"
+        android:text="Welcome to Financier"
         android:textColor="@color/start_color"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/my_projects"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/start_bt_color"
+        android:textSize="25dp"
         android:textStyle="bold"
-        android:textSize="30dp"
-        android:text="My Projects"
-        android:layout_marginTop="210dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/my_projects_"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/start_bt_color"
-        android:textSize="20dp"
-        android:text="You hav not a projects"
-        android:layout_marginTop="280dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -75,5 +48,7 @@
             android:background="@drawable/profile_first"
             android:contentDescription="@string/app_name" />
     </LinearLayout>
+
+
 
 </RelativeLayout>

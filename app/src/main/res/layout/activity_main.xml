@@ -21,18 +21,15 @@
         tools:ignore="UnknownId" />
 
     <Button
-        android:id="@+id/start_bt"
+        android:id="@+id/signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
         android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif-black"
         android:textColor="@color/start_color"
         android:textSize="20dp"
         android:backgroundTint="@color/start_bt_color"
-        android:layout_above="@+id/f_bg"
         android:layout_alignParentBottom="true"
-        tools:ignore="NotSibling"
-        />
+        android:text="Signup"/>
 
 </RelativeLayout>
