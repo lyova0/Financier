@@ -1,7 +1,9 @@
 package com.example.financier;
 
 import static com.example.financier.plus.i;
+import static com.example.financier.plus.j;
 import static com.example.financier.plus.oll_posts;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +19,7 @@ import android.widget.TextView;
 public class Home extends AppCompatActivity {
 
     Button updatte;
+    Button previous;
     TextView type;
     TextView name;
     TextView summary_of_the_idea;
@@ -29,6 +32,7 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         updatte = findViewById(R.id.update_btn);
+        previous = findViewById(R.id.previous_btn);
 
         type = findViewById(R.id.project1_type);
         name = findViewById(R.id.project1_name_financier);
@@ -39,11 +43,24 @@ public class Home extends AppCompatActivity {
 
         updatte.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                type.setText((oll_posts[i].project_type).toString());
-                name.setText((oll_posts[i].project_name).toString());
-                summary_of_the_idea.setText((oll_posts[i].project_summary_of_the_idea).toString());
-                amount_to_be_collected.setText((oll_posts[i].project_type).toString());
+            public void onClick(View view) {
+                j++;
+                name.setText(oll_posts[j][0]);
+                type.setText(oll_posts[j][1]);
+                summary_of_the_idea.setText(oll_posts[j][2]);
+                amount_to_be_collected.setText(oll_posts[j][3]);
+            }
+
+        });
+
+        previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                j--;
+                name.setText(oll_posts[j][0]);
+                type.setText(oll_posts[j][1]);
+                summary_of_the_idea.setText(oll_posts[j][2]);
+                amount_to_be_collected.setText(oll_posts[j][3]);
             }
         });
 
