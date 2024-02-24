@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home"
-    android:background="@drawable/home">
-    <TextView
-        android:id="@+id/welcome_fn"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-black"
-        android:text="Welcome to Financier"
-        android:textColor="@color/start_color"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="15dp"/>
-
+    android:background="@color/white"
+    tools:context=".search_">
 
     <LinearLayout
         android:layout_width="345dp"
@@ -25,7 +13,7 @@
         android:layout_centerInParent="true"
         android:background="@drawable/blue_border"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,22 +31,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/project1_name_financier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project name"
-                android:textColor="@color/start_bt_color"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/project1_name_financier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project name"
+                    android:textColor="@color/start_bt_color"
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project user"
-                android:textColor="@color/start_bt_color"
-                android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project user"
+                    android:textColor="@color/start_bt_color"
+                    android:textSize="25dp" />
 
             </LinearLayout>
 
@@ -108,7 +96,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="76dp"
-        android:layout_marginBottom="165dp"
+        android:layout_marginBottom="150dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/start_bt_color"
         android:text="next" />
@@ -122,47 +110,7 @@
         android:layout_marginEnd="225dp"
         android:textColor="@color/white"
         android:backgroundTint="@color/start_bt_color"
-        android:layout_marginBottom="165dp"
+        android:layout_marginBottom="150dp"
         android:text="previous" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-
-        <ImageButton
-            android:id="@+id/home_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/home_first"
-            android:contentDescription="@string/app_name" />
-
-        <Button
-            android:id="@+id/search_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/baseline_search_24"
-            android:layout_marginLeft="50dp"/>
-
-        <ImageButton
-            android:id="@+id/plus_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="40dp"
-            android:background="@drawable/plus_icon_first"
-            android:contentDescription="@string/app_name" />
-
-        <ImageButton
-            android:id="@+id/profile_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="125dp"
-            android:background="@drawable/profile_first"
-            android:contentDescription="@string/app_name" />
-    </LinearLayout>
-
-
 
 </RelativeLayout>

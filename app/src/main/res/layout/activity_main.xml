@@ -20,16 +20,17 @@
         android:textSize="40dp"
         tools:ignore="UnknownId" />
 
+
     <Button
         android:id="@+id/signup"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:fontFamily="sans-serif-black"
-        android:textColor="@color/start_color"
+        android:textColor="@color/start_bt_color"
         android:textSize="20dp"
-        android:backgroundTint="@color/start_bt_color"
+        android:backgroundTint="@color/start_color"
         android:layout_alignParentBottom="true"
-        android:text="Signup"/>
+        android:text="Start"/>
 
 </RelativeLayout>

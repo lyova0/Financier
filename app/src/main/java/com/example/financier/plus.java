@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class plus extends AppCompatActivity {
 
     EditText project_name, project_type, project_summary_of_the_idea, project_amount_to_be_collected, full_presentation_of_the_project, project_user;
-    public static String[][] oll_posts = new String[100][5];
+    public static String[][] oll_posts = new String[100][6];
     public static int i = -1;
     public static int j = -1;
 
@@ -43,6 +43,7 @@ public class plus extends AppCompatActivity {
                 oll_posts[i][2] = project_summary_of_the_idea.getText().toString();
                 oll_posts[i][3] = project_amount_to_be_collected.getText().toString();
                 oll_posts[i][4] = project_user.getText().toString();
+                oll_posts[i][5] = full_presentation_of_the_project.getText().toString();
                 startActivity(new Intent(plus.this, Home.class));
             }
         });
