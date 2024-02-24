@@ -38,6 +38,11 @@
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/profile_page" />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <TextView
                 android:id="@+id/project1_name_financier"
                 android:layout_width="wrap_content"
@@ -46,6 +51,16 @@
                 android:textColor="@color/start_bt_color"
                 android:textSize="30dp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Project user"
+                android:textColor="@color/start_bt_color"
+                android:textSize="25dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

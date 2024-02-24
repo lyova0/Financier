@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 public class plus extends AppCompatActivity {
 
-    EditText project_name, project_type, project_summary_of_the_idea, project_amount_to_be_collected, full_presentation_of_the_project;
-    public static String[][] oll_posts = new String[100][4];
+    EditText project_name, project_type, project_summary_of_the_idea, project_amount_to_be_collected, full_presentation_of_the_project, project_user;
+    public static String[][] oll_posts = new String[100][5];
     public static int i = -1;
     public static int j = -1;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +30,10 @@ public class plus extends AppCompatActivity {
         project_summary_of_the_idea = findViewById(R.id.summary_of_the_idea);
         project_amount_to_be_collected = findViewById(R.id.amount_to_be_collected);
         full_presentation_of_the_project = findViewById(R.id.full_presentation_of_the_project);
+        project_user = findViewById(R.id.user);
 
         btn.setOnClickListener(new View.OnClickListener() {
-            NewPost a1 = new NewPost(project_name.getText().toString(), project_type.getText().toString(), project_summary_of_the_idea.getText().toString(), project_amount_to_be_collected.getText().toString(), full_presentation_of_the_project.getText().toString());
-            String name = a1.project_name;
-            String type = a1.project_type;
-            String summary = a1.project_summary_of_the_idea;
-            String amount = a1.project_amount_to_be_collected;
+            NewPost a1 = new NewPost(project_name.getText().toString(), project_type.getText().toString(), project_summary_of_the_idea.getText().toString(), project_amount_to_be_collected.getText().toString(), full_presentation_of_the_project.getText().toString(), project_user.getText().toString());
 
             @Override
             public void onClick(View v) {
@@ -44,6 +42,7 @@ public class plus extends AppCompatActivity {
                 oll_posts[i][1] = project_type.getText().toString();
                 oll_posts[i][2] = project_summary_of_the_idea.getText().toString();
                 oll_posts[i][3] = project_amount_to_be_collected.getText().toString();
+                oll_posts[i][4] = project_user.getText().toString();
                 startActivity(new Intent(plus.this, Home.class));
             }
         });

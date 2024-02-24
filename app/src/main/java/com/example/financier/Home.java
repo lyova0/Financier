@@ -24,6 +24,7 @@ public class Home extends AppCompatActivity {
     TextView name;
     TextView summary_of_the_idea;
     TextView amount_to_be_collected;
+    TextView project_user;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -38,6 +39,7 @@ public class Home extends AppCompatActivity {
         name = findViewById(R.id.project1_name_financier);
         summary_of_the_idea = findViewById(R.id.summary_of_the_idea_financier1);
         amount_to_be_collected = findViewById(R.id.amount_to_be_collected_financier1);
+        project_user = findViewById(R.id.username);
         ImageButton btn = findViewById(R.id.profile_btn);
         ImageButton btn1 = findViewById(R.id.plus_btn);
 
@@ -49,6 +51,7 @@ public class Home extends AppCompatActivity {
                 type.setText(oll_posts[j][1]);
                 summary_of_the_idea.setText(oll_posts[j][2]);
                 amount_to_be_collected.setText(oll_posts[j][3]);
+                project_user.setText(oll_posts[j][4]);
             }
 
         });
