@@ -5,24 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:background="@drawable/home">
+    android:background="@drawable/home_t">
+
+
     <TextView
         android:id="@+id/welcome_fn"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
+        android:layout_width="318dp"
+        android:layout_height="157dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-black"
         android:text="Welcome to Financier"
         android:textColor="@color/start_color"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="15dp"/>
-
+        android:textSize="45dp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="345dp"
-        android:layout_height="329dp"
-        android:layout_centerInParent="true"
+        android:layout_width="546dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="103dp"
+        android:layout_marginBottom="245dp"
         android:background="@drawable/blue_border"
         android:orientation="vertical"
         android:padding="10dp">
@@ -32,8 +36,8 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:background="@drawable/profile_page" />
@@ -43,22 +47,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/project1_name_financier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project name"
-                android:textColor="@color/start_bt_color"
-                android:textSize="30dp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/project1_name_financier"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project name"
+                    android:textColor="@color/start_bt_color"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/username"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Project user"
-                android:textColor="@color/start_bt_color"
-                android:textSize="25dp" />
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project user"
+                    android:textColor="@color/start_bt_color"
+                    android:textSize="35dp" />
 
             </LinearLayout>
 
@@ -70,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="Project type"
             android:textColor="@color/start_bt_color"
-            android:textSize="25dp" />
+            android:textSize="35dp" />
 
         <TextView
             android:id="@+id/summary_of_the_idea_financier1"
@@ -79,7 +83,7 @@
             android:layout_marginTop="20dp"
             android:text="Summary of the idea"
             android:textColor="@color/start_bt_color"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/amount_to_be_collected_financier1"
@@ -88,7 +92,7 @@
             android:layout_marginTop="10dp"
             android:text="Amount to be collected"
             android:textColor="@color/start_bt_color"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
         <Button
             android:id="@+id/to_learn_more_btn1"
@@ -97,7 +101,7 @@
             android:backgroundTint="@color/start_bt_color"
             android:text="To learn more"
             android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textSize="30dp" />
 
     </LinearLayout>
 
@@ -107,11 +111,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="165dp"
-        android:textColor="@color/white"
+        android:layout_marginEnd="70dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/start_bt_color"
-        android:text="next" />
+        android:text="next"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/previous_btn"
@@ -119,46 +123,46 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="225dp"
-        android:textColor="@color/white"
+        android:layout_marginEnd="559dp"
+        android:layout_marginBottom="80dp"
         android:backgroundTint="@color/start_bt_color"
-        android:layout_marginBottom="165dp"
-        android:text="previous" />
+        android:text="previous"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true">
 
 
         <ImageButton
             android:id="@+id/home_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/home_first"
             android:contentDescription="@string/app_name" />
 
         <Button
             android:id="@+id/search_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/baseline_search_24"
-            android:layout_marginLeft="50dp"/>
+            android:layout_marginLeft="120dp"/>
 
         <ImageButton
             android:id="@+id/plus_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="40dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="130dp"
             android:background="@drawable/plus_icon_first"
             android:contentDescription="@string/app_name" />
 
         <ImageButton
             android:id="@+id/profile_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="125dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="260dp"
             android:background="@drawable/profile_first"
             android:contentDescription="@string/app_name" />
     </LinearLayout>

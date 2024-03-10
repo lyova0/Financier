@@ -3,6 +3,7 @@ package com.example.financier;
 import static com.example.financier.MainActivity.my_user_name;
 import static com.example.financier.plus.j;
 import static com.example.financier.plus.oll_posts;
+import static com.example.financier.search.search_name;
 import static java.lang.String.valueOf;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,12 +46,6 @@ public class profile extends AppCompatActivity {
         ImageButton btn = findViewById(R.id.home_btn);
         ImageButton btn1 = findViewById(R.id.plus_btn);
 
-        type = findViewById(R.id.project1_type);
-        name = findViewById(R.id.project1_name_financier);
-        summary_of_the_idea = findViewById(R.id.summary_of_the_idea_financier1);
-        amount_to_be_collected = findViewById(R.id.amount_to_be_collected_financier1);
-        project_user = findViewById(R.id.username);
-
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,5 +62,6 @@ public class profile extends AppCompatActivity {
                 startActivity(new Intent(profile.this, plus.class));
             }
         });
+
     }
 }

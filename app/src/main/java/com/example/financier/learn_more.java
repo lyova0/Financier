@@ -18,6 +18,7 @@ public class learn_more extends AppCompatActivity {
 
     TextView project_name, project_type, project_user, project_amount_to_be_collected, full_presentation_of_the_project;
     Button view;
+    public static String status;
 
 
     @SuppressLint("MissingInflatedId")

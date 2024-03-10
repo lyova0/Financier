@@ -83,6 +83,7 @@ public class Home extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                j = 0;
                 startActivity(new Intent(Home.this, profile.class));
             }
         });

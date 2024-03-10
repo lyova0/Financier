@@ -32,7 +32,7 @@ public class search extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 search_name = search.getText().toString();
-                j = -1;
+                j = 0;
                 startActivity(new Intent(search.this, search_.class));
             }
         });

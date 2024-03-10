@@ -7,6 +7,7 @@ import static com.example.financier.search.search_name;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class search_ extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 for (int i = j; i < oll_posts.length; i++) {
-                    if (oll_posts[i][4] == search_name) {
+                    if (oll_posts[i][4].equals(search_name)) {
                         j = i;
                         break;
                     }
@@ -51,6 +52,32 @@ public class search_ extends AppCompatActivity {
                 summary_of_the_idea.setText(oll_posts[j][2]);
                 amount_to_be_collected.setText(oll_posts[j][3]);
                 project_user.setText(oll_posts[j][4]);
+                j++;
+            }
+        });
+        previous_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for (int i = j; i > 0; i--) {
+                    if (oll_posts[i][4].equals(search_name)) {
+                        j = i;
+                        break;
+                    }
+                }
+                name.setText(oll_posts[j][0]);
+                type.setText(oll_posts[j][1]);
+                summary_of_the_idea.setText(oll_posts[j][2]);
+                amount_to_be_collected.setText(oll_posts[j][3]);
+                project_user.setText(oll_posts[j][4]);
+                j--;
+            }
+        });
+
+        learn_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(search_.this, learn_more.class));
+                j--;
             }
         });
     }
