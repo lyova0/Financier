@@ -6,14 +6,13 @@
     tools:context=".MainActivity"
     android:id="@+id/f_bg"
     android:padding="20dp"
-    android:background="@drawable/startbg_t">
+    android:background="@drawable/startbg">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/financier"
-        android:layout_marginTop="650dp"
+        android:layout_marginTop="420dp"
         android:fontFamily="sans-serif-black"
         android:padding="20dp"
         android:text="Financier"

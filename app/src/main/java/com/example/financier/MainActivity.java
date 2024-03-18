@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     public static String my_user_name;
+
 
 
     @SuppressLint("MissingInflatedId")
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button btn = (Button)findViewById(R.id.signup);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
