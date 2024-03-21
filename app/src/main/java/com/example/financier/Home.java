@@ -9,6 +9,7 @@ import static com.example.financier.plus.business_j;
 import static com.example.financier.plus.ecology_i;
 import static com.example.financier.plus.education_j;
 import static com.example.financier.plus.education_i;
+import static com.example.financier.plus.my_post_j;
 import static com.example.financier.plus.solar_energy_i;
 import static com.example.financier.plus.tourism_i;
 import static com.example.financier.plus.tourism_projects;
@@ -95,6 +96,9 @@ public class Home extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                my_post_j = -1;
+                next_post.setVisibility(View.INVISIBLE);
+                previous_post.setVisibility(View.INVISIBLE);
                 startActivity(new Intent(Home.this, profile.class));
             }
         });
@@ -103,6 +107,8 @@ public class Home extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                next_post.setVisibility(View.INVISIBLE);
+                previous_post.setVisibility(View.INVISIBLE);
                 startActivity(new Intent(Home.this, plus.class));
             }
         });
@@ -388,12 +394,111 @@ public class Home extends AppCompatActivity {
                             project_user.setText(business_projects[business_j][3]);
                             full_presentation.setText(business_projects[business_j][4]);
                             type.setText(business_projects[business_j][5]);
-                            previous_post.setVisibility(View.VISIBLE);
                         } else {
-                            next_post.setVisibility(View.INVISIBLE);
                             business_j--;
                         }
                     }
+                    previous_post.setVisibility(View.VISIBLE);
+                } else if (status == "tourism") {
+                    if (tourism_i != -1) {
+                        tourism_j++;
+                        if (tourism_j <= tourism_i) {
+                            if (tourism_projects[tourism_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(tourism_projects[tourism_j][0]);
+                            name.setText(tourism_projects[tourism_j][1]);
+                            amount_to_be_collected.setText(tourism_projects[tourism_j][2]);
+                            project_user.setText(tourism_projects[tourism_j][3]);
+                            full_presentation.setText(tourism_projects[tourism_j][4]);
+                            type.setText(tourism_projects[tourism_j][5]);
+                        } else {
+                            tourism_j--;
+                        }
+                    }
+                    previous_post.setVisibility(View.VISIBLE);
+                } else if (status == "solar energy") {
+                    if (solar_energy_i != -1) {
+                        solar_energy_j++;
+                        if (solar_energy_j <= solar_energy_i) {
+                            if (solar_energy_projects[solar_energy_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(solar_energy_projects[solar_energy_j][0]);
+                            name.setText(solar_energy_projects[solar_energy_j][1]);
+                            amount_to_be_collected.setText(solar_energy_projects[solar_energy_j][2]);
+                            project_user.setText(solar_energy_projects[solar_energy_j][3]);
+                            full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
+                            type.setText(solar_energy_projects[solar_energy_j][5]);
+                        } else {
+                            solar_energy_j--;
+                        }
+                    }
+                    previous_post.setVisibility(View.VISIBLE);
+                } else if (status == "education") {
+                    if (education_i != -1) {
+                        education_j++;
+                        if (education_j <= education_i) {
+                            if (education_projects[education_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(education_projects[education_j][0]);
+                            name.setText(education_projects[education_j][1]);
+                            amount_to_be_collected.setText(education_projects[education_j][2]);
+                            project_user.setText(education_projects[education_j][3]);
+                            full_presentation.setText(education_projects[education_j][4]);
+                            type.setText(education_projects[education_j][5]);
+                        } else {
+                            education_j--;
+                        }
+                    }
+                    previous_post.setVisibility(View.VISIBLE);
+                } else if (status == "agriculture") {
+                    if (agriculture_i != -1) {
+                        agriculture_j++;
+                        if (agriculture_j <= agriculture_i) {
+                            if ( agriculture_projects[agriculture_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(agriculture_projects[agriculture_j][0]);
+                            name.setText(agriculture_projects[agriculture_j][1]);
+                            amount_to_be_collected.setText(agriculture_projects[agriculture_j][2]);
+                            project_user.setText(agriculture_projects[agriculture_j][3]);
+                            full_presentation.setText(agriculture_projects[agriculture_j][4]);
+                            type.setText(agriculture_projects[agriculture_j][5]);
+                        } else {
+                            agriculture_j--;
+                        }
+                    }
+                    previous_post.setVisibility(View.VISIBLE);
+                } else if (status == "ecology") {
+                    if (ecology_i != -1) {
+                        ecology_j++;
+                        if (ecology_j <= education_i) {
+                            if ( ecology_projects[ecology_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(ecology_projects[ecology_j][0]);
+                            name.setText(ecology_projects[ecology_j][1]);
+                            amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
+                            project_user.setText(ecology_projects[ecology_j][3]);
+                            full_presentation.setText(ecology_projects[ecology_j][4]);
+                            type.setText(ecology_projects[ecology_j][5]);
+                        } else {
+                            ecology_j--;
+                        }
+                    }
+                    previous_post.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -416,12 +521,11 @@ public class Home extends AppCompatActivity {
                             project_user.setText(business_projects[business_j][3]);
                             full_presentation.setText(business_projects[business_j][4]);
                             type.setText(business_projects[business_j][5]);
-                            next_post.setVisibility(View.VISIBLE);
                         } else {
-                            previous_post.setVisibility(View.INVISIBLE);
                             business_j++;
                         }
                     }
+                    next_post.setVisibility(View.VISIBLE);
                 } else if (status == "tourism") {
                     if (tourism_i != -1) {
                         tourism_j--;
@@ -437,11 +541,10 @@ public class Home extends AppCompatActivity {
                             project_user.setText(tourism_projects[tourism_j][3]);
                             full_presentation.setText(tourism_projects[tourism_j][4]);
                             type.setText(tourism_projects[tourism_j][5]);
-                            next_post.setVisibility(View.VISIBLE);
                         } else {
-                            previous_post.setVisibility(View.INVISIBLE);
                             tourism_j++;
                         }
+                        next_post.setVisibility(View.VISIBLE);
                     }
                 } else if (status == "solar energy") {
                     if (solar_energy_i != -1) {
@@ -458,33 +561,71 @@ public class Home extends AppCompatActivity {
                             project_user.setText(solar_energy_projects[solar_energy_j][3]);
                             full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
                             type.setText(solar_energy_projects[solar_energy_j][5]);
-                            next_post.setVisibility(View.VISIBLE);
                         } else {
-                            previous_post.setVisibility(View.INVISIBLE);
                             solar_energy_j++;
                         }
                     }
+                    next_post.setVisibility(View.VISIBLE);
                 } else if (status == "education") {
-                    if (solar_energy_i != -1) {
-                        solar_energy_j--;
-                        if (solar_energy_j >= 0) {
-                            if (solar_energy_projects[solar_energy_j][0].equals("Financier")) {
+                    if (education_i != -1) {
+                        education_j--;
+                        if (education_j >= 0) {
+                            if (education_projects[education_j][0].equals("Financier")) {
                                 project_icon.setImageResource(R.drawable.financier_icon);
                             } else {
                                 project_icon.setImageResource(R.drawable.entrepreneur_icon);
                             }
-                            project_status.setText(solar_energy_projects[solar_energy_j][0]);
-                            name.setText(solar_energy_projects[solar_energy_j][1]);
-                            amount_to_be_collected.setText(solar_energy_projects[solar_energy_j][2]);
-                            project_user.setText(solar_energy_projects[solar_energy_j][3]);
-                            full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
-                            type.setText(solar_energy_projects[solar_energy_j][5]);
-                            next_post.setVisibility(View.VISIBLE);
+                            project_status.setText(education_projects[education_j][0]);
+                            name.setText(education_projects[education_j][1]);
+                            amount_to_be_collected.setText(education_projects[education_j][2]);
+                            project_user.setText(education_projects[education_j][3]);
+                            full_presentation.setText(education_projects[education_j][4]);
+                            type.setText(education_projects[education_j][5]);
                         } else {
-                            previous_post.setVisibility(View.INVISIBLE);
-                            solar_energy_j++;
+                            education_j++;
                         }
                     }
+                    next_post.setVisibility(View.VISIBLE);
+                } else if (status == "agriculture") {
+                    if (agriculture_i != -1) {
+                        agriculture_j--;
+                        if (agriculture_j >= 0) {
+                            if ( agriculture_projects[agriculture_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(agriculture_projects[agriculture_j][0]);
+                            name.setText(agriculture_projects[agriculture_j][1]);
+                            amount_to_be_collected.setText(agriculture_projects[agriculture_j][2]);
+                            project_user.setText(agriculture_projects[agriculture_j][3]);
+                            full_presentation.setText(agriculture_projects[agriculture_j][4]);
+                            type.setText(agriculture_projects[agriculture_j][5]);
+                        } else {
+                            agriculture_j++;
+                        }
+                    }
+                    next_post.setVisibility(View.VISIBLE);
+                } else if (status == "ecology") {
+                    if (ecology_i != -1) {
+                        ecology_j--;
+                        if (ecology_j >= 0) {
+                            if ( ecology_projects[ecology_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(ecology_projects[ecology_j][0]);
+                            name.setText(ecology_projects[ecology_j][1]);
+                            amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
+                            project_user.setText(ecology_projects[ecology_j][3]);
+                            full_presentation.setText(ecology_projects[ecology_j][4]);
+                            type.setText(ecology_projects[ecology_j][5]);
+                        } else {
+                            ecology_j++;
+                        }
+                    }
+                    next_post.setVisibility(View.VISIBLE);
                 }
             }
         });

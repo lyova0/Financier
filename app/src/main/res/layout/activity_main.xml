@@ -20,6 +20,15 @@
         android:textSize="60dp"
         tools:ignore="UnknownId" />
 
+    <EditText
+        android:id="@+id/my_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="your user"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_marginTop="600dp"/>
+
     <Button
         android:id="@+id/signup"
         android:layout_width="match_parent"

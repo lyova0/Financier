@@ -28,6 +28,10 @@ public class plus extends AppCompatActivity {
     public static String[][] ecology_projects = new String[100][6];
     public static String[][] my_posts = new String[100][6];
 
+    final String[] moneys = {"$", "֏", "₽", "€"};
+
+    int i = 0;
+
     public static int business_i = -1;
     public static int tourism_i = -1;
     public static int solar_energy_i = -1;
@@ -76,6 +80,8 @@ public class plus extends AppCompatActivity {
 
         //new post btn
         new_post = findViewById(R.id.new_post_btn);
+
+        Button money = findViewById(R.id.money);
 
         financier.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,12 +184,12 @@ public class plus extends AppCompatActivity {
         new_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none"){
+                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_amount.getText().toString().matches("\\d+") && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none"){
                     if (project_type.equals("Business")){
                         business_i++;
                         business_projects[business_i][0] = status;
                         business_projects[business_i][1] = project_name.getText().toString();
-                        business_projects[business_i][2] = project_amount.getText().toString();
+                        business_projects[business_i][2] = project_amount.getText().toString() + money.getText().toString();
                         business_projects[business_i][3] = project_user.getText().toString();
                         business_projects[business_i][4] = full_presentation_of_the_project.getText().toString();
                         business_projects[business_i][5] = project_type;
@@ -192,7 +198,7 @@ public class plus extends AppCompatActivity {
                         tourism_i++;
                         tourism_projects[tourism_i][0] = status;
                         tourism_projects[tourism_i][1] = project_name.getText().toString();
-                        tourism_projects[tourism_i][2] = project_amount.getText().toString();
+                        tourism_projects[tourism_i][2] = project_amount.getText().toString() + money.getText().toString();
                         tourism_projects[tourism_i][3] = project_user.getText().toString();
                         tourism_projects[tourism_i][4] = full_presentation_of_the_project.getText().toString();
                         tourism_projects[tourism_i][5] = project_type;
@@ -201,7 +207,7 @@ public class plus extends AppCompatActivity {
                         solar_energy_i++;
                         solar_energy_projects[solar_energy_i][0] = status;
                         solar_energy_projects[solar_energy_i][1] = project_name.getText().toString();
-                        solar_energy_projects[solar_energy_i][2] = project_amount.getText().toString();
+                        solar_energy_projects[solar_energy_i][2] = project_amount.getText().toString() + money.getText().toString();
                         solar_energy_projects[solar_energy_i][3] = project_user.getText().toString();
                         solar_energy_projects[solar_energy_i][4] = full_presentation_of_the_project.getText().toString();
                         solar_energy_projects[solar_energy_i][5] = project_type;
@@ -210,7 +216,7 @@ public class plus extends AppCompatActivity {
                         education_i++;
                         education_projects[education_i][0] = status;
                         education_projects[education_i][1] = project_name.getText().toString();
-                        education_projects[education_i][2] = project_amount.getText().toString();
+                        education_projects[education_i][2] = project_amount.getText().toString() + money.getText().toString();
                         education_projects[education_i][3] = project_user.getText().toString();
                         education_projects[education_i][4] = full_presentation_of_the_project.getText().toString();
                         education_projects[education_i][5] = project_type;
@@ -219,7 +225,7 @@ public class plus extends AppCompatActivity {
                         agriculture_i++;
                         agriculture_projects[agriculture_i][0] = status;
                         agriculture_projects[agriculture_i][1] = project_name.getText().toString();
-                        agriculture_projects[agriculture_i][2] = project_amount.getText().toString();
+                        agriculture_projects[agriculture_i][2] = project_amount.getText().toString() + money.getText().toString();
                         agriculture_projects[agriculture_i][3] = project_user.getText().toString();
                         agriculture_projects[agriculture_i][4] = full_presentation_of_the_project.getText().toString();
                         agriculture_projects[agriculture_i][5] = project_type;
@@ -227,7 +233,7 @@ public class plus extends AppCompatActivity {
                         ecology_i++;
                         ecology_projects[ecology_i][0] = status;
                         ecology_projects[ecology_i][1] = project_name.getText().toString();
-                        ecology_projects[ecology_i][2] = project_amount.getText().toString();
+                        ecology_projects[ecology_i][2] = project_amount.getText().toString() + money.getText().toString();
                         ecology_projects[ecology_i][3] = project_user.getText().toString();
                         ecology_projects[ecology_i][4] = full_presentation_of_the_project.getText().toString();
                         ecology_projects[ecology_i][5] = project_type;
@@ -237,7 +243,7 @@ public class plus extends AppCompatActivity {
                         my_post_i++;
                         my_posts[my_post_i][0] = status;
                         my_posts[my_post_i][1] = project_name.getText().toString();
-                        my_posts[my_post_i][2] = project_amount.getText().toString();
+                        my_posts[my_post_i][2] = project_amount.getText().toString() + money.getText().toString();
                         my_posts[my_post_i][3] = project_user.getText().toString();
                         my_posts[my_post_i][4] = full_presentation_of_the_project.getText().toString();
                         my_posts[my_post_i][5] = project_type;
@@ -249,6 +255,7 @@ public class plus extends AppCompatActivity {
                     education_j = -1;
                     agriculture_j = -1;
                     ecology_j = -1;
+                    my_post_j = -1;
 
                     startActivity(new Intent(plus.this, Home.class));
                 } else if (project_name.getText().toString().length() == 0){
@@ -263,6 +270,19 @@ public class plus extends AppCompatActivity {
                 } else if (full_presentation_of_the_project.getText().toString().length() == 0){
                     full_presentation_of_the_project.setText("");
                     full_presentation_of_the_project.setHint("This line can't be empty");
+                }
+            }
+        });
+
+        money.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (i < moneys.length - 1){
+                    i++;
+                    money.setText(moneys[i]);
+                } else if (i == moneys.length - 1){
+                    i = 0;
+                    money.setText(moneys[i]);
                 }
             }
         });

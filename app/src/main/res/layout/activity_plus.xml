@@ -78,17 +78,33 @@
         android:textSize="15dp"
         android:layout_marginTop="160dp"/>
 
-    <EditText
-        android:id="@+id/project_amount"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:padding="10dp"
-        android:background="@drawable/blue_border"
-        android:textColorHint="@color/light_gray"
-        android:textColor="@color/blue"
-        android:hint="Project amount to be collected"
+        android:layout_height="wrap_content"
         android:layout_marginTop="183dp"
-        />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/project_amount"
+            android:layout_width="260dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:background="@drawable/blue_border"
+            android:textColorHint="@color/light_gray"
+            android:textColor="@color/blue"
+            android:hint="Project amount to be collected"
+            android:textSize="15dp"
+            />
+
+        <Button
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/gray"/>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
