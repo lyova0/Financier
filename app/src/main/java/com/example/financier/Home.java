@@ -197,6 +197,7 @@ public class Home extends AppCompatActivity {
                         } else {
                             project_icon.setImageResource(R.drawable.entrepreneur_icon);
                         }
+
                         project_status.setText(ecology_projects[ecology_j][0]);
                         name.setText(ecology_projects[ecology_j][1]);
                         amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
