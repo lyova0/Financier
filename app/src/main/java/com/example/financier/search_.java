@@ -1,7 +1,5 @@
 package com.example.financier;
 
-import static com.example.financier.plus.j;
-import static com.example.financier.plus.oll_posts;
 import static com.example.financier.search.search_name;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,8 +25,6 @@ public class search_ extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search2);
-
-        j = 0;
         learn_more = findViewById(R.id.to_learn_more_btn1);
         type = findViewById(R.id.project1_type);
         name = findViewById(R.id.project1_name_financier);
@@ -41,43 +37,18 @@ public class search_ extends AppCompatActivity {
         next_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = j; i < oll_posts.length; i++) {
-                    if (oll_posts[i][4].equals(search_name)) {
-                        j = i;
-                        break;
-                    }
-                }
-                name.setText(oll_posts[j][0]);
-                type.setText(oll_posts[j][1]);
-                summary_of_the_idea.setText(oll_posts[j][2]);
-                amount_to_be_collected.setText(oll_posts[j][3]);
-                project_user.setText(oll_posts[j][4]);
-                j++;
             }
         });
         previous_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (int i = j; i > 0; i--) {
-                    if (oll_posts[i][4].equals(search_name)) {
-                        j = i;
-                        break;
-                    }
-                }
-                name.setText(oll_posts[j][0]);
-                type.setText(oll_posts[j][1]);
-                summary_of_the_idea.setText(oll_posts[j][2]);
-                amount_to_be_collected.setText(oll_posts[j][3]);
-                project_user.setText(oll_posts[j][4]);
-                j--;
+
             }
         });
 
         learn_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(search_.this, learn_more.class));
-                j--;
             }
         });
     }

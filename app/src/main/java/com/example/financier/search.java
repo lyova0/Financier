@@ -1,7 +1,5 @@
 package com.example.financier;
 
-import static com.example.financier.plus.oll_posts;
-import static com.example.financier.plus.j;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,7 +30,6 @@ public class search extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 search_name = search.getText().toString();
-                j = 0;
                 startActivity(new Intent(search.this, search_.class));
             }
         });

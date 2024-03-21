@@ -243,6 +243,13 @@ public class plus extends AppCompatActivity {
                         my_posts[my_post_i][5] = project_type;
                     }
 
+                    business_j = -1;
+                    tourism_j = -1;
+                    solar_energy_j = -1;
+                    education_j = -1;
+                    agriculture_j = -1;
+                    ecology_j = -1;
+
                     startActivity(new Intent(plus.this, Home.class));
                 } else if (project_name.getText().toString().length() == 0){
                     project_name.setText("");

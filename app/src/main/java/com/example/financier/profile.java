@@ -1,8 +1,6 @@
 package com.example.financier;
 
 import static com.example.financier.MainActivity.my_user_name;
-import static com.example.financier.plus.j;
-import static com.example.financier.plus.oll_posts;
 import static com.example.financier.search.search_name;
 import static java.lang.String.valueOf;
 
@@ -50,7 +48,6 @@ public class profile extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                j = -1;
                 startActivity(new Intent(profile.this, Home.class));
             }
         });
@@ -58,7 +55,6 @@ public class profile extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                j = -1;
                 startActivity(new Intent(profile.this, plus.class));
             }
         });
