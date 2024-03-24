@@ -6,13 +6,13 @@
     tools:context=".MainActivity"
     android:id="@+id/f_bg"
     android:padding="20dp"
-    android:background="@drawable/startbg">
+    android:background="@drawable/startbg_t">
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="650dp"
         android:fontFamily="sans-serif-black"
         android:padding="20dp"
         android:text="Financier"
@@ -27,7 +27,8 @@
         android:hint="your user"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
-        android:layout_marginTop="600dp"/>
+        android:textSize="30dp"
+        android:layout_marginTop="800dp"/>
 
     <Button
         android:id="@+id/signup"

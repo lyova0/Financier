@@ -1,17 +1,23 @@
 package com.example.financier;
 
+import static com.example.financier.MainActivity.my_user_name;
 import static com.example.financier.plus.agriculture_i;
+import static com.example.financier.plus.agriculture_post_count;
 import static com.example.financier.plus.business_i;
+import static com.example.financier.plus.business_post_count;
 import static com.example.financier.plus.business_projects;
 import static com.example.financier.plus.business_j;
 
 
 import static com.example.financier.plus.ecology_i;
+import static com.example.financier.plus.ecology_post_count;
 import static com.example.financier.plus.education_j;
 import static com.example.financier.plus.education_i;
 import static com.example.financier.plus.my_post_j;
 import static com.example.financier.plus.solar_energy_i;
+import static com.example.financier.plus.solar_energy_post_count;
 import static com.example.financier.plus.tourism_i;
+import static com.example.financier.plus.tourism_post_count;
 import static com.example.financier.plus.tourism_projects;
 import static com.example.financier.plus.tourism_j;
 
@@ -65,7 +71,6 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        search_icon = findViewById(R.id.search_icon);
         ImageButton btn = findViewById(R.id.profile_btn);
         ImageButton btn1 = findViewById(R.id.plus_btn);
         project_layout = findViewById(R.id.project_layout);
@@ -87,6 +92,7 @@ public class Home extends AppCompatActivity {
         Button previous_post = findViewById(R.id.previous_post);
 
         ImageView project_icon = findViewById(R.id.project_icon);
+
         project_layout.setVisibility(View.INVISIBLE);
         next_post.setVisibility(View.INVISIBLE);
         previous_post.setVisibility(View.INVISIBLE);
@@ -116,7 +122,9 @@ public class Home extends AppCompatActivity {
         business.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
+                if (business_post_count > 1) {
+                    next_post.setVisibility(View.VISIBLE);
+                }
 
                 status = "business";
 
@@ -153,13 +161,16 @@ public class Home extends AppCompatActivity {
                     previous_post.setVisibility(View.INVISIBLE);
                     project_layout.setVisibility(View.INVISIBLE);
                 }
+
             }
         });
 
         tourism.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
+                if (tourism_post_count > 1) {
+                    next_post.setVisibility(View.VISIBLE);
+                }
 
                 status = "tourism";
 
@@ -203,8 +214,9 @@ public class Home extends AppCompatActivity {
         solar_energy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
-
+                if (solar_energy_post_count > 1) {
+                    next_post.setVisibility(View.VISIBLE);
+                }
                 status = "solar energy";
 
                 solar_energy.setBackgroundColor(getResources().getColor(R.color.blue));
@@ -236,7 +248,6 @@ public class Home extends AppCompatActivity {
                     type.setText(solar_energy_projects[solar_energy_j][5]);
                     project_layout.setVisibility(View.VISIBLE);
                 } else {
-
                     next_post.setVisibility(View.INVISIBLE);
                     previous_post.setVisibility(View.INVISIBLE);
                     project_layout.setVisibility(View.INVISIBLE);
@@ -291,7 +302,9 @@ public class Home extends AppCompatActivity {
         agriculture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
+                if (agriculture_post_count > 1) {
+                    next_post.setVisibility(View.VISIBLE);
+                }
 
                 status = "agriculture";
 
@@ -335,7 +348,9 @@ public class Home extends AppCompatActivity {
         ecology.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
+                if (ecology_post_count > 1) {
+                    next_post.setVisibility(View.VISIBLE);
+                }
 
                 status = "ecology";
 
@@ -394,6 +409,10 @@ public class Home extends AppCompatActivity {
                             project_user.setText(business_projects[business_j][3]);
                             full_presentation.setText(business_projects[business_j][4]);
                             type.setText(business_projects[business_j][5]);
+                            if (business_j++ == business_post_count ){
+                                business_j--;
+                                next_post.setVisibility(View.INVISIBLE);
+                            }
                         } else {
                             business_j--;
                         }

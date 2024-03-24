@@ -13,6 +13,7 @@ import static com.example.financier.plus.ecology_projects;
 import static com.example.financier.plus.education_i;
 import static com.example.financier.plus.education_j;
 import static com.example.financier.plus.education_projects;
+import static com.example.financier.plus.my_post_count;
 import static com.example.financier.plus.my_post_i;
 import static com.example.financier.plus.my_post_j;
 import static com.example.financier.plus.my_posts;
@@ -107,23 +108,25 @@ public class profile extends AppCompatActivity {
             public void onClick(View view) {
                 if (status_btn == "hide") {
                     project_layout.setVisibility(View.VISIBLE);
-                    next_post.setVisibility(View.VISIBLE);
-                    previous_post.setVisibility(View.VISIBLE);
+                    if (my_post_count > 1) {
+                        next_post.setVisibility(View.VISIBLE);
+                        previous_post.setVisibility(View.VISIBLE);
+                    }
                     see_my_post.setBackgroundColor(getResources().getColor(R.color.blue));
                     if (my_post_i != -1) {
                         project_layout.setVisibility(View.VISIBLE);
                         my_post_j++;
-                        if (my_posts[my_post_j][0].equals("Financier")) {
-                            project_icon.setImageResource(R.drawable.financier_icon);
-                        } else {
-                            project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                        }
-                        project_status.setText(my_posts[my_post_j][0]);
-                        name.setText(my_posts[my_post_j][1]);
-                        amount_to_be_collected.setText(my_posts[my_post_j][2]);
-                        project_user.setText(my_posts[my_post_j][3]);
-                        full_presentation.setText(my_posts[my_post_j][4]);
-                        type.setText(my_posts[my_post_j][5]);
+                            if (my_posts[my_post_j][0].equals("Financier")) {
+                                project_icon.setImageResource(R.drawable.financier_icon);
+                            } else {
+                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                            }
+                            project_status.setText(my_posts[my_post_j][0]);
+                            name.setText(my_posts[my_post_j][1]);
+                            amount_to_be_collected.setText(my_posts[my_post_j][2]);
+                            project_user.setText(my_posts[my_post_j][3]);
+                            full_presentation.setText(my_posts[my_post_j][4]);
+                            type.setText(my_posts[my_post_j][5]);
                     }
                     status_btn = "show";
                 } else if (status_btn == "show"){

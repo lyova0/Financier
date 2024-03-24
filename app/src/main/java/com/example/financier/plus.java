@@ -20,13 +20,13 @@ import org.w3c.dom.Text;
 public class plus extends AppCompatActivity {
 
     EditText project_name, project_amount, full_presentation_of_the_project, project_user;
-    public static String[][] business_projects = new String[100][6];
-    public static String[][] tourism_projects = new String[100][6];
-    public static String[][] solar_energy_projects = new String[100][6];
-    public static String[][] education_projects = new String[100][6];
-    public static String[][] agriculture_projects = new String[100][6];
-    public static String[][] ecology_projects = new String[100][6];
-    public static String[][] my_posts = new String[100][6];
+    public static String[][] business_projects = new String[100][7];
+    public static String[][] tourism_projects = new String[100][7];
+    public static String[][] solar_energy_projects = new String[100][7];
+    public static String[][] education_projects = new String[100][7];
+    public static String[][] agriculture_projects = new String[100][7];
+    public static String[][] ecology_projects = new String[100][7];
+    public static String[][] my_posts = new String[100][7];
 
     final String[] moneys = {"$", "֏", "₽", "€"};
 
@@ -50,6 +50,8 @@ public class plus extends AppCompatActivity {
 
     String status = "none";
     String project_type = "none";
+
+    public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count  = 0;
 
     Button financier, entrepreneur, business, tourism, solar_energy, education, agriculture, ecology, new_post;
 
@@ -193,6 +195,7 @@ public class plus extends AppCompatActivity {
                         business_projects[business_i][3] = project_user.getText().toString();
                         business_projects[business_i][4] = full_presentation_of_the_project.getText().toString();
                         business_projects[business_i][5] = project_type;
+                        business_post_count++;
 
                     } else if (project_type.equals("Tourism")){
                         tourism_i++;
@@ -202,6 +205,7 @@ public class plus extends AppCompatActivity {
                         tourism_projects[tourism_i][3] = project_user.getText().toString();
                         tourism_projects[tourism_i][4] = full_presentation_of_the_project.getText().toString();
                         tourism_projects[tourism_i][5] = project_type;
+                        tourism_post_count++;
 
                     }else if (project_type.equals("Solar Energy")){
                         solar_energy_i++;
@@ -211,6 +215,7 @@ public class plus extends AppCompatActivity {
                         solar_energy_projects[solar_energy_i][3] = project_user.getText().toString();
                         solar_energy_projects[solar_energy_i][4] = full_presentation_of_the_project.getText().toString();
                         solar_energy_projects[solar_energy_i][5] = project_type;
+                        solar_energy_post_count++;
 
                     } else if (project_type.equals("Education")){
                         education_i++;
@@ -220,6 +225,7 @@ public class plus extends AppCompatActivity {
                         education_projects[education_i][3] = project_user.getText().toString();
                         education_projects[education_i][4] = full_presentation_of_the_project.getText().toString();
                         education_projects[education_i][5] = project_type;
+                        education_post_count++;
 
                     } else if (project_type.equals("Agriculture")){
                         agriculture_i++;
@@ -229,6 +235,8 @@ public class plus extends AppCompatActivity {
                         agriculture_projects[agriculture_i][3] = project_user.getText().toString();
                         agriculture_projects[agriculture_i][4] = full_presentation_of_the_project.getText().toString();
                         agriculture_projects[agriculture_i][5] = project_type;
+                        agriculture_post_count++;
+
                     } else if (project_type.equals("Ecology")){
                         ecology_i++;
                         ecology_projects[ecology_i][0] = status;
@@ -237,10 +245,12 @@ public class plus extends AppCompatActivity {
                         ecology_projects[ecology_i][3] = project_user.getText().toString();
                         ecology_projects[ecology_i][4] = full_presentation_of_the_project.getText().toString();
                         ecology_projects[ecology_i][5] = project_type;
+                        ecology_post_count++;
                     }
 
                     if (project_user.getText().toString().equals(my_user_name)){
                         my_post_i++;
+                        my_post_count++;
                         my_posts[my_post_i][0] = status;
                         my_posts[my_post_i][1] = project_name.getText().toString();
                         my_posts[my_post_i][2] = project_amount.getText().toString() + money.getText().toString();

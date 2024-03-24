@@ -169,7 +169,7 @@
             android:backgroundTint="@color/black"
             android:text="business"
             android:textColor="@color/white"
-            android:textSize="10dp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/tourism_type"
@@ -178,7 +178,7 @@
             android:backgroundTint="@color/black"
             android:text="tourism"
             android:textColor="@color/white"
-            android:textSize="10dp"
+            android:textSize="20dp"
             android:layout_marginLeft="10dp"/>
 
         <Button
@@ -188,7 +188,7 @@
             android:backgroundTint="@color/black"
             android:text="Education"
             android:textColor="@color/white"
-            android:textSize="10dp"
+            android:textSize="20dp"
             android:layout_marginLeft="10dp"/>
 
 
@@ -207,7 +207,7 @@
             android:backgroundTint="@color/black"
             android:text="Solar energy"
             android:textColor="@color/white"
-            android:textSize="10dp" />
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/agriculture_type"
@@ -216,7 +216,7 @@
             android:backgroundTint="@color/black"
             android:text="Agriculture"
             android:textColor="@color/white"
-            android:textSize="10dp"
+            android:textSize="20dp"
             android:layout_marginLeft="10dp"/>
 
         <Button
@@ -226,7 +226,7 @@
             android:backgroundTint="@color/black"
             android:text="Ecology"
             android:textColor="@color/white"
-            android:textSize="10dp"
+            android:textSize="20dp"
             android:layout_marginLeft="10dp"/>
     </LinearLayout>
 
