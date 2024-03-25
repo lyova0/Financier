@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:background="@drawable/profile_t">
+    android:background="@drawable/profile">
 
     <TextView
-        android:layout_width="366dp"
-        android:layout_height="141dp"
+        android:layout_width="198dp"
+        android:layout_height="74dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="80dp"
         android:fontFamily="sans-serif-black"
         android:text="This is your account for Financier"
         android:textColor="@color/start_color"
-        android:textSize="35dp"
+        android:textSize="20dp"
         android:textStyle="bold" />
 
     <Button
@@ -23,20 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/gray"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="200dp"
         android:layout_marginLeft="10dp"
         android:text="See my posts"
         android:textColor="@color/white"/>
 
     <LinearLayout
         android:id="@+id/project_layout"
-        android:layout_marginLeft="80dp"
-        android:layout_width="450dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="12dp"
         android:background="@drawable/blue_border"
-        android:layout_marginTop="500dp">
+        android:layout_marginTop="300dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,8 +44,8 @@
 
             <ImageView
                 android:id="@+id/project_icon"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:src="@drawable/financier_icon"
                 />
 
@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Project name"
-                    android:textSize="35dp"
+                    android:textSize="25dp"
                     android:textColor="@color/blue"/>
 
                 <TextView
@@ -68,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Project type"
-                    android:textSize="25dp"
+                    android:textSize="15dp"
                     android:textColor="@color/blue"/>
 
             </LinearLayout>
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blue"
             android:text="Project user"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -90,7 +90,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blue"
             android:text="Project status"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -99,7 +99,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blue"
             android:text="Project presentation"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:layout_marginTop="10dp"/>
 
         <TextView
@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/blue"
             android:text="Project amount"
-            android:textSize="25dp"
+            android:textSize="15dp"
             android:layout_marginTop="0dp"/>
 
         <LinearLayout
@@ -130,19 +130,20 @@
 
     </LinearLayout>
 
+
     <Button
         android:id="@+id/next_post"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="820dp"
-        android:layout_marginLeft="580dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginLeft="300dp"
         android:background="@drawable/baseline_arrow_forward_ios_24"/>
 
     <Button
         android:id="@+id/previous_post"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="820dp"
+        android:layout_marginTop="580dp"
         android:layout_marginLeft="18dp"
         android:background="@drawable/baseline_arrow_back_ios_24"/>
 
@@ -157,7 +158,7 @@
             android:id="@+id/home_btn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="250dp"
+            android:layout_marginLeft="100dp"
             android:background="@drawable/home_first"
             android:contentDescription="@string/app_name" />
 

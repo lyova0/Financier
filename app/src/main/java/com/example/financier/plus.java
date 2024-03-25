@@ -28,11 +28,14 @@ public class plus extends AppCompatActivity {
     public static String[][] ecology_projects = new String[100][7];
     public static String[][] my_posts = new String[100][7];
 
+    public static String[][] oll_posts = new String[100][7];
+
     final String[] moneys = {"$", "֏", "₽", "€"};
 
     int i = 0;
 
     public static int business_i = -1;
+    public static int oll_post_i = -1;
     public static int tourism_i = -1;
     public static int solar_energy_i = -1;
     public static int education_i = -1;
@@ -47,11 +50,12 @@ public class plus extends AppCompatActivity {
     public static int agriculture_j = -1;
     public static int ecology_j = -1;
     public static int my_post_j = -1;
+    public static int oll_post_j = -1;
 
     String status = "none";
     String project_type = "none";
 
-    public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count  = 0;
+    public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count, oll_post_count = 0;
 
     Button financier, entrepreneur, business, tourism, solar_energy, education, agriculture, ecology, new_post;
 
@@ -266,6 +270,15 @@ public class plus extends AppCompatActivity {
                     agriculture_j = -1;
                     ecology_j = -1;
                     my_post_j = -1;
+
+                    oll_post_i++;
+                    oll_posts[oll_post_i][0] = status;
+                    oll_posts[oll_post_i][1] = project_name.getText().toString();
+                    oll_posts[oll_post_i][2] = project_amount.getText().toString() + money.getText().toString();
+                    oll_posts[oll_post_i][3] = project_user.getText().toString();
+                    oll_posts[oll_post_i][4] = full_presentation_of_the_project.getText().toString();
+                    oll_posts[oll_post_i][5] = project_type;
+                    oll_post_count = business_post_count + tourism_post_count + solar_energy_post_count + education_post_count + agriculture_post_count + ecology_post_count;
 
                     startActivity(new Intent(plus.this, Home.class));
                 } else if (project_name.getText().toString().length() == 0){

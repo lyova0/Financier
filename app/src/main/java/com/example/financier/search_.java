@@ -1,6 +1,5 @@
 package com.example.financier;
 
-import static com.example.financier.search.search_name;
 
 import androidx.appcompat.app.AppCompatActivity;
 

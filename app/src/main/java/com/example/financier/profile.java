@@ -23,7 +23,6 @@ import static com.example.financier.plus.solar_energy_projects;
 import static com.example.financier.plus.tourism_i;
 import static com.example.financier.plus.tourism_j;
 import static com.example.financier.plus.tourism_projects;
-import static com.example.financier.search.search_name;
 import static java.lang.String.valueOf;
 
 import androidx.appcompat.app.AppCompatActivity;
