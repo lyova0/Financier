@@ -59,7 +59,11 @@ import android.widget.TextView;
 public class Home extends AppCompatActivity {
 
 
-    Button search, view;
+    Button search;
+
+    public static String[] learn_more_post = new String[10];
+    public static String learn_more_post_type = "";
+    public static int learn_more_post_i = -1;
 
     LinearLayout project_layout;
 
@@ -72,7 +76,6 @@ public class Home extends AppCompatActivity {
         ImageButton btn1 = findViewById(R.id.plus_btn);
         project_layout = findViewById(R.id.oll_posts);
         search = findViewById(R.id.search_btn);
-        view = findViewById(R.id.s);
         project_layout.setVisibility(View.INVISIBLE);
 
         project_layout.setVisibility(View.VISIBLE);
@@ -139,7 +142,7 @@ public class Home extends AppCompatActivity {
 //                    oll_posts[oll_post_i][4] = full_presentation_of_the_project.getText().toString();
 //                    oll_posts[oll_post_i][5] = project_type;
 
-            projectNameTextView.setText(oll_posts[i][0]);
+            projectNameTextView.setText(oll_posts[i][1]);
             projectNameTextView.setTextSize(35);
             projectNameTextView.setTextColor(getResources().getColor(R.color.blue));
             textLinearLayout.addView(projectNameTextView);
@@ -216,6 +219,7 @@ public class Home extends AppCompatActivity {
             moreButton.setText("More");
             moreButton.setTextColor(getResources().getColor(R.color.black));
             moreButton.setBackgroundTintList(getResources().getColorStateList(R.color.light_gray));
+
             buttonLinearLayout.addView(moreButton);
 
             outerLinearLayout.addView(buttonLinearLayout);

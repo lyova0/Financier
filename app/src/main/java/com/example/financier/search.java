@@ -14,6 +14,8 @@ import static com.example.financier.plus.ecology_post_count;
 import static com.example.financier.plus.education_j;
 import static com.example.financier.plus.education_i;
 import static com.example.financier.plus.my_post_j;
+import static com.example.financier.plus.oll_post_count;
+import static com.example.financier.plus.oll_posts;
 import static com.example.financier.plus.solar_energy_i;
 import static com.example.financier.plus.solar_energy_post_count;
 import static com.example.financier.plus.tourism_i;
@@ -37,6 +39,10 @@ import static com.example.financier.plus.agriculture_j;
 import static com.example.financier.plus.ecology_projects;
 import static com.example.financier.plus.ecology_j;
 
+import static com.example.financier.Home.learn_more_post;
+import static com.example.financier.Home.learn_more_post_i;
+import static com.example.financier.Home.learn_more_post_type;
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -56,597 +62,357 @@ import android.widget.TextView;
 
 public class search extends AppCompatActivity {
 
-    Button search_icon;
-    TextView type;
-    TextView name;
-    TextView full_presentation;
-    TextView project_status;
-    TextView amount_to_be_collected;
-    TextView project_user;
-    String status = "";
+    Button search;
 
     LinearLayout project_layout;
+
+    String status, post_status = "NONE";
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        ImageButton btn = findViewById(R.id.profile_btn);
-        ImageButton btn1 = findViewById(R.id.plus_btn);
-        project_layout = findViewById(R.id.project_layout);
-        type = findViewById(R.id.project_type);
-        name = findViewById(R.id.project_name);
-        full_presentation = findViewById(R.id.project_presentation);
-        project_status = findViewById(R.id.project_status_t);
-        amount_to_be_collected = findViewById(R.id.project_amount);
-        project_user = findViewById(R.id.project_user);
 
-        Button business = findViewById(R.id.project_business);
-        Button tourism = findViewById(R.id.project_tourism);
-        Button solar_energy = findViewById(R.id.project_solar_energy);
-        Button education = findViewById(R.id.project_education);
-        Button agriculture = findViewById(R.id.project_agriculture);
-        Button ecology = findViewById(R.id.project_ecology);
+        project_layout = findViewById(R.id.oll_posts);
 
-        Button next_post = findViewById(R.id.next_post);
-        Button previous_post = findViewById(R.id.previous_post);
-
-        ImageView project_icon = findViewById(R.id.project_icon);
+        Button financier = findViewById(R.id.project_financier);
+        Button innovator = findViewById(R.id.project_innovator);
 
         project_layout.setVisibility(View.INVISIBLE);
-        next_post.setVisibility(View.INVISIBLE);
-        previous_post.setVisibility(View.INVISIBLE);
+
+        project_layout.removeAllViews();
 
 
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                my_post_j = -1;
-                next_post.setVisibility(View.INVISIBLE);
-                previous_post.setVisibility(View.INVISIBLE);
-                startActivity(new Intent(search.this, profile.class));
-            }
-        });
-
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                next_post.setVisibility(View.INVISIBLE);
-                previous_post.setVisibility(View.INVISIBLE);
-                startActivity(new Intent(search.this, plus.class));
-            }
-        });
-
-        business.setOnClickListener(new View.OnClickListener() {
+        financier.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (business_post_count > 1) {
-                    next_post.setVisibility(View.VISIBLE);
-                }
+                financier.setBackgroundColor(getResources().getColor(R.color.blue));
+                innovator.setBackgroundColor(getResources().getColor(R.color.gray));
+                post_status = "Financier";
 
-                status = "business";
+                project_layout.removeAllViews();
 
-                business.setBackgroundColor(getResources().getColor(R.color.blue));
-                tourism.setBackgroundColor(getResources().getColor(R.color.gray));
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.gray));
-                education.setBackgroundColor(getResources().getColor(R.color.gray));
-                agriculture.setBackgroundColor(getResources().getColor(R.color.gray));
-                ecology.setBackgroundColor(getResources().getColor(R.color.gray));
+                project_layout.setVisibility(View.VISIBLE);
 
-                tourism_j = -1;
-                solar_energy_j = -1;
-                education_j = -1;
-                agriculture_j = -1;
-                ecology_j = -1;
+                for (int i = 0; i < oll_post_count; i++) {
 
-                if (business_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    business_j++;
-                    if (business_projects[business_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
+                    if (oll_posts[i][0].equals("Financier")) {
+
+                        LinearLayout projectLayout1 = new LinearLayout(search.this);
+
+// Create the outermost LinearLayout
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                680, // width
+                                580 // height
+                        );
+                        layoutParams.setMargins(0, 400, 0, 0); // left, top, right, bottom
+                        LinearLayout outerLinearLayout = new LinearLayout(search.this);
+                        outerLinearLayout.setLayoutParams(layoutParams);
+                        outerLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                        outerLinearLayout.setPadding(12, 12, 12, 12); // left, top, right, bottom
+                        outerLinearLayout.setBackgroundResource(R.drawable.blue_border);
+
+// Create the LinearLayout for image and text
+                        LinearLayout.LayoutParams innerLayoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        LinearLayout innerLinearLayout = new LinearLayout(search.this);
+                        innerLinearLayout.setLayoutParams(innerLayoutParams);
+                        innerLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+// Create and add ImageView
+                        ImageView imageView = new ImageView(search.this);
+                        LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+                                140, // width
+                                140 // height
+                        );
+                        imageView.setLayoutParams(imageLayoutParams);
+                        if (oll_posts[i][0].equals("Financier")) {
+                            imageView.setImageResource(R.drawable.financier_icon);
+                        } else if (oll_posts[i][0].equals("Entrepreneur")) {
+                            imageView.setImageResource(R.drawable.entrepreneur_icon);
+                        }
+                        innerLinearLayout.addView(imageView);
+
+// Create and add inner LinearLayout for text
+                        LinearLayout textLinearLayout = new LinearLayout(search.this);
+                        LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        textLinearLayout.setLayoutParams(textLayoutParams);
+                        textLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                        textLinearLayout.setPadding(5, 5, 5, 5); // left, top, right, bottom
+
+// Create and add TextViews
+                        TextView projectNameTextView = new TextView(search.this);
+                        projectNameTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+
+                        projectNameTextView.setText(oll_posts[i][1]);
+                        projectNameTextView.setTextSize(35);
+                        projectNameTextView.setTextColor(getResources().getColor(R.color.blue));
+                        textLinearLayout.addView(projectNameTextView);
+
+                        TextView projectTypeTextView = new TextView(search.this);
+                        projectTypeTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectTypeTextView.setText(oll_posts[i][5]);
+                        projectTypeTextView.setTextSize(20);
+                        projectTypeTextView.setTextColor(getResources().getColor(R.color.blue));
+                        textLinearLayout.addView(projectTypeTextView);
+
+                        innerLinearLayout.addView(textLinearLayout);
+                        outerLinearLayout.addView(innerLinearLayout);
+
+// Create and add other TextViews
+                        TextView projectUserTextView = new TextView(search.this);
+                        projectUserTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectUserTextView.setText(oll_posts[i][3]);
+                        projectUserTextView.setTextSize(25);
+                        projectUserTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectUserTextView);
+
+                        TextView projectstatusTextView = new TextView(search.this);
+                        projectstatusTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectstatusTextView.setText(oll_posts[i][0]);
+                        projectstatusTextView.setTextSize(25);
+                        projectstatusTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectstatusTextView);
+
+                        TextView projectpresentationTextView = new TextView(search.this);
+                        projectpresentationTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectpresentationTextView.setText(oll_posts[i][4]);
+                        projectpresentationTextView.setTextSize(25);
+                        projectpresentationTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectpresentationTextView);
+
+                        TextView projectamountTextView = new TextView(search.this);
+                        projectamountTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectamountTextView.setText(oll_posts[i][2]);
+                        projectamountTextView.setTextSize(20);
+                        projectamountTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectamountTextView);
+
+// Similarly, create and add other TextViews
+
+// Create LinearLayout for Button
+                        LinearLayout buttonLinearLayout = new LinearLayout(search.this);
+                        buttonLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                        Button moreButton = new Button(search.this);
+                        moreButton.setLayoutParams(new LinearLayout.LayoutParams(
+                                650, // width
+                                100 // height
+                        ));
+                        moreButton.setText("More");
+                        moreButton.setTextColor(getResources().getColor(R.color.black));
+                        moreButton.setBackgroundTintList(getResources().getColorStateList(R.color.light_gray));
+                        int finalI = i;
+                        moreButton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                learn_more_post_type = "oll_post";
+                                learn_more_post_i = finalI;
+                                startActivity(new Intent(search.this, learn_more.class));
+                            }
+                        });
+
+                        buttonLinearLayout.addView(moreButton);
+
+                        outerLinearLayout.addView(buttonLinearLayout);
+
+// Add the outer LinearLayout to the main layout
+                        projectLayout1.addView(outerLinearLayout);
+
+                        project_layout.addView(projectLayout1);
+
                     }
-                    project_status.setText(business_projects[business_j][0]);
-                    name.setText(business_projects[business_j][1]);
-                    amount_to_be_collected.setText(business_projects[business_j][2]);
-                    project_user.setText(business_projects[business_j][3]);
-                    full_presentation.setText(business_projects[business_j][4]);
-                    type.setText(business_projects[business_j][5]);
-                } else {
-
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
                 }
 
             }
         });
 
-        tourism.setOnClickListener(new View.OnClickListener() {
+        innovator.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tourism_post_count > 1) {
-                    next_post.setVisibility(View.VISIBLE);
+                innovator.setBackgroundColor(getResources().getColor(R.color.blue));
+                financier.setBackgroundColor(getResources().getColor(R.color.gray));
+                post_status = "Innovator";
+
+                project_layout.removeAllViews();
+
+                project_layout.setVisibility(View.VISIBLE);
+
+                for (int i = 0; i < oll_post_count; i++) {
+
+                    if (oll_posts[i][0].equals("Innovator")) {
+
+                        LinearLayout projectLayout1 = new LinearLayout(search.this);
+
+// Create the outermost LinearLayout
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                680, // width
+                                580 // height
+                        );
+                        layoutParams.setMargins(0, 400, 0, 0); // left, top, right, bottom
+                        LinearLayout outerLinearLayout = new LinearLayout(search.this);
+                        outerLinearLayout.setLayoutParams(layoutParams);
+                        outerLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                        outerLinearLayout.setPadding(12, 12, 12, 12); // left, top, right, bottom
+                        outerLinearLayout.setBackgroundResource(R.drawable.blue_border);
+
+// Create the LinearLayout for image and text
+                        LinearLayout.LayoutParams innerLayoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        LinearLayout innerLinearLayout = new LinearLayout(search.this);
+                        innerLinearLayout.setLayoutParams(innerLayoutParams);
+                        innerLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+// Create and add ImageView
+                        ImageView imageView = new ImageView(search.this);
+                        LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+                                140, // width
+                                140 // height
+                        );
+                        imageView.setLayoutParams(imageLayoutParams);
+                        if (oll_posts[i][0].equals("Financier")) {
+                            imageView.setImageResource(R.drawable.financier_icon);
+                        } else if (oll_posts[i][0].equals("Entrepreneur")) {
+                            imageView.setImageResource(R.drawable.entrepreneur_icon);
+                        }
+                        innerLinearLayout.addView(imageView);
+
+// Create and add inner LinearLayout for text
+                        LinearLayout textLinearLayout = new LinearLayout(search.this);
+                        LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        );
+                        textLinearLayout.setLayoutParams(textLayoutParams);
+                        textLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                        textLinearLayout.setPadding(5, 5, 5, 5); // left, top, right, bottom
+
+// Create and add TextViews
+                        TextView projectNameTextView = new TextView(search.this);
+                        projectNameTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+
+                        projectNameTextView.setText(oll_posts[i][1]);
+                        projectNameTextView.setTextSize(35);
+                        projectNameTextView.setTextColor(getResources().getColor(R.color.blue));
+                        textLinearLayout.addView(projectNameTextView);
+
+                        TextView projectTypeTextView = new TextView(search.this);
+                        projectTypeTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectTypeTextView.setText(oll_posts[i][5]);
+                        projectTypeTextView.setTextSize(20);
+                        projectTypeTextView.setTextColor(getResources().getColor(R.color.blue));
+                        textLinearLayout.addView(projectTypeTextView);
+
+                        innerLinearLayout.addView(textLinearLayout);
+                        outerLinearLayout.addView(innerLinearLayout);
+
+// Create and add other TextViews
+                        TextView projectUserTextView = new TextView(search.this);
+                        projectUserTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectUserTextView.setText(oll_posts[i][3]);
+                        projectUserTextView.setTextSize(25);
+                        projectUserTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectUserTextView);
+
+                        TextView projectstatusTextView = new TextView(search.this);
+                        projectstatusTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectstatusTextView.setText(oll_posts[i][0]);
+                        projectstatusTextView.setTextSize(25);
+                        projectstatusTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectstatusTextView);
+
+                        TextView projectpresentationTextView = new TextView(search.this);
+                        projectpresentationTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectpresentationTextView.setText(oll_posts[i][4]);
+                        projectpresentationTextView.setTextSize(25);
+                        projectpresentationTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectpresentationTextView);
+
+                        TextView projectamountTextView = new TextView(search.this);
+                        projectamountTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.WRAP_CONTENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        projectamountTextView.setText(oll_posts[i][2]);
+                        projectamountTextView.setTextSize(20);
+                        projectamountTextView.setTextColor(getResources().getColor(R.color.blue));
+                        outerLinearLayout.addView(projectamountTextView);
+
+// Similarly, create and add other TextViews
+
+// Create LinearLayout for Button
+                        LinearLayout buttonLinearLayout = new LinearLayout(search.this);
+                        buttonLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                        ));
+                        buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                        Button moreButton = new Button(search.this);
+                        moreButton.setLayoutParams(new LinearLayout.LayoutParams(
+                                650, // width
+                                100 // height
+                        ));
+                        moreButton.setText("More");
+                        moreButton.setTextColor(getResources().getColor(R.color.black));
+                        moreButton.setBackgroundTintList(getResources().getColorStateList(R.color.light_gray));
+                        buttonLinearLayout.addView(moreButton);
+
+                        outerLinearLayout.addView(buttonLinearLayout);
+
+// Add the outer LinearLayout to the main layout
+                        projectLayout1.addView(outerLinearLayout);
+
+                        project_layout.addView(projectLayout1);
+
+                    }
                 }
 
-                status = "tourism";
-
-                tourism.setBackgroundColor(getResources().getColor(R.color.blue));
-                business.setBackgroundColor(getResources().getColor(R.color.gray));
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.gray));
-                education.setBackgroundColor(getResources().getColor(R.color.gray));
-                agriculture.setBackgroundColor(getResources().getColor(R.color.gray));
-                ecology.setBackgroundColor(getResources().getColor(R.color.gray));
-
-                business_j = -1;
-                solar_energy_j = -1;
-                education_j = -1;
-                agriculture_j = -1;
-                ecology_j = -1;
-
-                if (tourism_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    tourism_j++;
-                    if (tourism_projects[tourism_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                    }
-                    project_status.setText(tourism_projects[tourism_j][0]);
-                    name.setText(tourism_projects[tourism_j][1]);
-                    amount_to_be_collected.setText(tourism_projects[tourism_j][2]);
-                    project_user.setText(tourism_projects[tourism_j][3]);
-                    full_presentation.setText(tourism_projects[tourism_j][4]);
-                    type.setText(tourism_projects[tourism_j][5]);
-                    project_layout.setVisibility(View.VISIBLE);
-                } else {
-
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        solar_energy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (solar_energy_post_count > 1) {
-                    next_post.setVisibility(View.VISIBLE);
-                }
-                status = "solar energy";
-
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.blue));
-                tourism.setBackgroundColor(getResources().getColor(R.color.gray));
-                business.setBackgroundColor(getResources().getColor(R.color.gray));
-                education.setBackgroundColor(getResources().getColor(R.color.gray));
-                agriculture.setBackgroundColor(getResources().getColor(R.color.gray));
-                ecology.setBackgroundColor(getResources().getColor(R.color.gray));
-
-                tourism_j = -1;
-                business_j = -1;
-                education_j = -1;
-                agriculture_j = -1;
-                ecology_j = -1;
-
-                if (solar_energy_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    solar_energy_j++;
-                    if (solar_energy_projects[solar_energy_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                    }
-                    project_status.setText(solar_energy_projects[solar_energy_j][0]);
-                    name.setText(solar_energy_projects[solar_energy_j][1]);
-                    amount_to_be_collected.setText(solar_energy_projects[solar_energy_j][2]);
-                    project_user.setText(solar_energy_projects[solar_energy_j][3]);
-                    full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
-                    type.setText(solar_energy_projects[solar_energy_j][5]);
-                    project_layout.setVisibility(View.VISIBLE);
-                } else {
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        education.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                next_post.setVisibility(View.VISIBLE);
-
-                status = "education";
-
-                education.setBackgroundColor(getResources().getColor(R.color.blue));
-                tourism.setBackgroundColor(getResources().getColor(R.color.gray));
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.gray));
-                business.setBackgroundColor(getResources().getColor(R.color.gray));
-                agriculture.setBackgroundColor(getResources().getColor(R.color.gray));
-                ecology.setBackgroundColor(getResources().getColor(R.color.gray));
-
-                tourism_j = -1;
-                solar_energy_j = -1;
-                business_j = -1;
-                agriculture_j = -1;
-                ecology_j = -1;
-
-                if (education_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    education_j++;
-                    if (education_projects[education_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                    }
-                    project_status.setText(education_projects[education_j][0]);
-                    name.setText(education_projects[education_j][1]);
-                    amount_to_be_collected.setText(education_projects[education_j][2]);
-                    project_user.setText(education_projects[education_j][3]);
-                    full_presentation.setText(education_projects[education_j][4]);
-                    type.setText(education_projects[education_j][5]);
-                    project_layout.setVisibility(View.VISIBLE);
-                } else {
-
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        agriculture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (agriculture_post_count > 1) {
-                    next_post.setVisibility(View.VISIBLE);
-                }
-
-                status = "agriculture";
-
-                agriculture.setBackgroundColor(getResources().getColor(R.color.blue));
-                tourism.setBackgroundColor(getResources().getColor(R.color.gray));
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.gray));
-                education.setBackgroundColor(getResources().getColor(R.color.gray));
-                business.setBackgroundColor(getResources().getColor(R.color.gray));
-                ecology.setBackgroundColor(getResources().getColor(R.color.gray));
-
-                tourism_j = -1;
-                solar_energy_j = -1;
-                education_j = -1;
-                business_j = -1;
-                ecology_j = -1;
-
-                if (agriculture_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    agriculture_j++;
-                    if (agriculture_projects[agriculture_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                    }
-                    project_status.setText(agriculture_projects[agriculture_j][0]);
-                    name.setText(agriculture_projects[agriculture_j][1]);
-                    amount_to_be_collected.setText(agriculture_projects[agriculture_j][2]);
-                    project_user.setText(agriculture_projects[agriculture_j][3]);
-                    full_presentation.setText(agriculture_projects[agriculture_j][4]);
-                    type.setText(agriculture_projects[agriculture_j][5]);
-                    project_layout.setVisibility(View.VISIBLE);
-                } else {
-
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        ecology.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (ecology_post_count > 1) {
-                    next_post.setVisibility(View.VISIBLE);
-                }
-
-                status = "ecology";
-
-                ecology.setBackgroundColor(getResources().getColor(R.color.blue));
-                tourism.setBackgroundColor(getResources().getColor(R.color.gray));
-                solar_energy.setBackgroundColor(getResources().getColor(R.color.gray));
-                education.setBackgroundColor(getResources().getColor(R.color.gray));
-                agriculture.setBackgroundColor(getResources().getColor(R.color.gray));
-                business.setBackgroundColor(getResources().getColor(R.color.gray));
-
-                tourism_j = -1;
-                solar_energy_j = -1;
-                education_j = -1;
-                agriculture_j = -1;
-                business_j = -1;
-
-                if (ecology_i != -1) {
-                    project_layout.setVisibility(View.VISIBLE);
-                    ecology_j++;
-                    if (ecology_projects[ecology_j][0].equals("Financier")) {
-                        project_icon.setImageResource(R.drawable.financier_icon);
-                    } else {
-                        project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                    }
-                    project_status.setText(ecology_projects[ecology_j][0]);
-                    name.setText(ecology_projects[ecology_j][1]);
-                    amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
-
-                    project_user.setText(ecology_projects[ecology_j][3]);
-                    full_presentation.setText(ecology_projects[ecology_j][4]);
-                    type.setText(ecology_projects[ecology_j][5]);
-                    project_layout.setVisibility(View.VISIBLE);
-                } else {
-
-                    next_post.setVisibility(View.INVISIBLE);
-                    project_layout.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        next_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (status == "business") {
-                    if (business_i != -1) {
-                        business_j++;
-                        if (business_j <= business_i) {
-                            if (business_projects[business_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(business_projects[business_j][0]);
-                            name.setText(business_projects[business_j][1]);
-                            amount_to_be_collected.setText(business_projects[business_j][2]);
-                            project_user.setText(business_projects[business_j][3]);
-                            full_presentation.setText(business_projects[business_j][4]);
-                            type.setText(business_projects[business_j][5]);
-                            if (business_j++ == business_post_count ){
-                                business_j--;
-                                next_post.setVisibility(View.INVISIBLE);
-                            }
-                        } else {
-                            business_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                } else if (status == "tourism") {
-                    if (tourism_i != -1) {
-                        tourism_j++;
-                        if (tourism_j <= tourism_i) {
-                            if (tourism_projects[tourism_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(tourism_projects[tourism_j][0]);
-                            name.setText(tourism_projects[tourism_j][1]);
-                            amount_to_be_collected.setText(tourism_projects[tourism_j][2]);
-                            project_user.setText(tourism_projects[tourism_j][3]);
-                            full_presentation.setText(tourism_projects[tourism_j][4]);
-                            type.setText(tourism_projects[tourism_j][5]);
-                        } else {
-                            tourism_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                } else if (status == "solar energy") {
-                    if (solar_energy_i != -1) {
-                        solar_energy_j++;
-                        if (solar_energy_j <= solar_energy_i) {
-                            if (solar_energy_projects[solar_energy_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(solar_energy_projects[solar_energy_j][0]);
-                            name.setText(solar_energy_projects[solar_energy_j][1]);
-                            amount_to_be_collected.setText(solar_energy_projects[solar_energy_j][2]);
-                            project_user.setText(solar_energy_projects[solar_energy_j][3]);
-                            full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
-                            type.setText(solar_energy_projects[solar_energy_j][5]);
-                        } else {
-                            solar_energy_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                } else if (status == "education") {
-                    if (education_i != -1) {
-                        education_j++;
-                        if (education_j <= education_i) {
-                            if (education_projects[education_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(education_projects[education_j][0]);
-                            name.setText(education_projects[education_j][1]);
-                            amount_to_be_collected.setText(education_projects[education_j][2]);
-                            project_user.setText(education_projects[education_j][3]);
-                            full_presentation.setText(education_projects[education_j][4]);
-                            type.setText(education_projects[education_j][5]);
-                        } else {
-                            education_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                } else if (status == "agriculture") {
-                    if (agriculture_i != -1) {
-                        agriculture_j++;
-                        if (agriculture_j <= agriculture_i) {
-                            if ( agriculture_projects[agriculture_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(agriculture_projects[agriculture_j][0]);
-                            name.setText(agriculture_projects[agriculture_j][1]);
-                            amount_to_be_collected.setText(agriculture_projects[agriculture_j][2]);
-                            project_user.setText(agriculture_projects[agriculture_j][3]);
-                            full_presentation.setText(agriculture_projects[agriculture_j][4]);
-                            type.setText(agriculture_projects[agriculture_j][5]);
-                        } else {
-                            agriculture_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                } else if (status == "ecology") {
-                    if (ecology_i != -1) {
-                        ecology_j++;
-                        if (ecology_j <= education_i) {
-                            if ( ecology_projects[ecology_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(ecology_projects[ecology_j][0]);
-                            name.setText(ecology_projects[ecology_j][1]);
-                            amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
-                            project_user.setText(ecology_projects[ecology_j][3]);
-                            full_presentation.setText(ecology_projects[ecology_j][4]);
-                            type.setText(ecology_projects[ecology_j][5]);
-                        } else {
-                            ecology_j--;
-                        }
-                    }
-                    previous_post.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        previous_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (status == "business") {
-                    if (business_i != -1) {
-                        business_j--;
-                        if (business_j >= 0) {
-                            if (business_projects[business_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(business_projects[business_j][0]);
-                            name.setText(business_projects[business_j][1]);
-                            amount_to_be_collected.setText(business_projects[business_j][2]);
-                            project_user.setText(business_projects[business_j][3]);
-                            full_presentation.setText(business_projects[business_j][4]);
-                            type.setText(business_projects[business_j][5]);
-                        } else {
-                            business_j++;
-                        }
-                    }
-                    next_post.setVisibility(View.VISIBLE);
-                } else if (status == "tourism") {
-                    if (tourism_i != -1) {
-                        tourism_j--;
-                        if (tourism_j >= 0) {
-                            if (tourism_projects[tourism_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(tourism_projects[tourism_j][0]);
-                            name.setText(tourism_projects[tourism_j][1]);
-                            amount_to_be_collected.setText(tourism_projects[tourism_j][2]);
-                            project_user.setText(tourism_projects[tourism_j][3]);
-                            full_presentation.setText(tourism_projects[tourism_j][4]);
-                            type.setText(tourism_projects[tourism_j][5]);
-                        } else {
-                            tourism_j++;
-                        }
-                        next_post.setVisibility(View.VISIBLE);
-                    }
-                } else if (status == "solar energy") {
-                    if (solar_energy_i != -1) {
-                        solar_energy_j--;
-                        if (solar_energy_j >= 0) {
-                            if (solar_energy_projects[solar_energy_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(solar_energy_projects[solar_energy_j][0]);
-                            name.setText(solar_energy_projects[solar_energy_j][1]);
-                            amount_to_be_collected.setText(solar_energy_projects[solar_energy_j][2]);
-                            project_user.setText(solar_energy_projects[solar_energy_j][3]);
-                            full_presentation.setText(solar_energy_projects[solar_energy_j][4]);
-                            type.setText(solar_energy_projects[solar_energy_j][5]);
-                        } else {
-                            solar_energy_j++;
-                        }
-                    }
-                    next_post.setVisibility(View.VISIBLE);
-                } else if (status == "education") {
-                    if (education_i != -1) {
-                        education_j--;
-                        if (education_j >= 0) {
-                            if (education_projects[education_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(education_projects[education_j][0]);
-                            name.setText(education_projects[education_j][1]);
-                            amount_to_be_collected.setText(education_projects[education_j][2]);
-                            project_user.setText(education_projects[education_j][3]);
-                            full_presentation.setText(education_projects[education_j][4]);
-                            type.setText(education_projects[education_j][5]);
-                        } else {
-                            education_j++;
-                        }
-                    }
-                    next_post.setVisibility(View.VISIBLE);
-                } else if (status == "agriculture") {
-                    if (agriculture_i != -1) {
-                        agriculture_j--;
-                        if (agriculture_j >= 0) {
-                            if ( agriculture_projects[agriculture_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(agriculture_projects[agriculture_j][0]);
-                            name.setText(agriculture_projects[agriculture_j][1]);
-                            amount_to_be_collected.setText(agriculture_projects[agriculture_j][2]);
-                            project_user.setText(agriculture_projects[agriculture_j][3]);
-                            full_presentation.setText(agriculture_projects[agriculture_j][4]);
-                            type.setText(agriculture_projects[agriculture_j][5]);
-                        } else {
-                            agriculture_j++;
-                        }
-                    }
-                    next_post.setVisibility(View.VISIBLE);
-                } else if (status == "ecology") {
-                    if (ecology_i != -1) {
-                        ecology_j--;
-                        if (ecology_j >= 0) {
-                            if ( ecology_projects[ecology_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                            }
-                            project_status.setText(ecology_projects[ecology_j][0]);
-                            name.setText(ecology_projects[ecology_j][1]);
-                            amount_to_be_collected.setText(ecology_projects[ecology_j][2]);
-                            project_user.setText(ecology_projects[ecology_j][3]);
-                            full_presentation.setText(ecology_projects[ecology_j][4]);
-                            type.setText(ecology_projects[ecology_j][5]);
-                        } else {
-                            ecology_j++;
-                        }
-                    }
-                    next_post.setVisibility(View.VISIBLE);
-                }
             }
         });
 

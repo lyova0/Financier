@@ -17,6 +17,8 @@ import static com.example.financier.plus.my_post_count;
 import static com.example.financier.plus.my_post_i;
 import static com.example.financier.plus.my_post_j;
 import static com.example.financier.plus.my_posts;
+import static com.example.financier.plus.oll_post_count;
+import static com.example.financier.plus.oll_posts;
 import static com.example.financier.plus.solar_energy_i;
 import static com.example.financier.plus.solar_energy_j;
 import static com.example.financier.plus.solar_energy_projects;
@@ -44,15 +46,6 @@ import java.text.BreakIterator;
 
 public class profile extends AppCompatActivity {
 
-    TextView type;
-    TextView name;
-    TextView full_presentation;
-    TextView project_status;
-    TextView amount_to_be_collected;
-    TextView project_user;
-
-    LinearLayout project_layout;
-
     String status_btn = "hide";
 
 
@@ -63,32 +56,20 @@ public class profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        project_layout = findViewById(R.id.project_layout);
-        type = findViewById(R.id.project_type);
-        name = findViewById(R.id.project_name);
-        full_presentation = findViewById(R.id.project_presentation);
-        project_status = findViewById(R.id.project_status_t);
-        amount_to_be_collected = findViewById(R.id.project_amount);
-        project_user = findViewById(R.id.project_user);
 
         Button see_my_post = findViewById(R.id.see_my_posts);
 
+        LinearLayout project_layout = findViewById(R.id.oll_posts);
+
         ImageButton btn = findViewById(R.id.home_btn);
         ImageButton btn1 = findViewById(R.id.plus_btn);
-        ImageView project_icon = findViewById(R.id.project_icon);
-
-        Button next_post = findViewById(R.id.next_post);
-        Button previous_post = findViewById(R.id.previous_post);
 
         project_layout.setVisibility(View.INVISIBLE);
-        next_post.setVisibility(View.INVISIBLE);
-        previous_post.setVisibility(View.INVISIBLE);
+        project_layout.removeAllViews();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                next_post.setVisibility(View.INVISIBLE);
-                previous_post.setVisibility(View.INVISIBLE);
                 startActivity(new Intent(profile.this, Home.class));
             }
         });
@@ -96,8 +77,6 @@ public class profile extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                next_post.setVisibility(View.INVISIBLE);
-                previous_post.setVisibility(View.INVISIBLE);
                 startActivity(new Intent(profile.this, plus.class));
             }
         });
@@ -107,89 +86,166 @@ public class profile extends AppCompatActivity {
             public void onClick(View view) {
                 if (status_btn == "hide") {
                     project_layout.setVisibility(View.VISIBLE);
-                    if (my_post_count > 1) {
-                        next_post.setVisibility(View.VISIBLE);
-                        previous_post.setVisibility(View.VISIBLE);
-                    }
                     see_my_post.setBackgroundColor(getResources().getColor(R.color.blue));
                     if (my_post_i != -1) {
                         project_layout.setVisibility(View.VISIBLE);
-                        my_post_j++;
-                            if (my_posts[my_post_j][0].equals("Financier")) {
-                                project_icon.setImageResource(R.drawable.financier_icon);
-                            } else {
-                                project_icon.setImageResource(R.drawable.entrepreneur_icon);
+
+                        project_layout.setVisibility(View.VISIBLE);
+                        for (int i = 0; i < my_post_count; i++) {
+
+                            LinearLayout projectLayout1 = new LinearLayout(profile.this);
+
+// Create the outermost LinearLayout
+                            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
+                                    680, // width
+                                    580 // height
+                            );
+                            layoutParams.setMargins(0, 400, 0, 0); // left, top, right, bottom
+                            LinearLayout outerLinearLayout = new LinearLayout(profile.this);
+                            outerLinearLayout.setLayoutParams(layoutParams);
+                            outerLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                            outerLinearLayout.setPadding(12, 12, 12, 12); // left, top, right, bottom
+                            outerLinearLayout.setBackgroundResource(R.drawable.blue_border);
+
+// Create the LinearLayout for image and text
+                            LinearLayout.LayoutParams innerLayoutParams = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            );
+                            LinearLayout innerLinearLayout = new LinearLayout(profile.this);
+                            innerLinearLayout.setLayoutParams(innerLayoutParams);
+                            innerLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+// Create and add ImageView
+                            ImageView imageView = new ImageView(profile.this);
+                            LinearLayout.LayoutParams imageLayoutParams = new LinearLayout.LayoutParams(
+                                    140, // width
+                                    140 // height
+                            );
+                            imageView.setLayoutParams(imageLayoutParams);
+                            if (my_posts[i][0].equals("Financier")) {
+                                imageView.setImageResource(R.drawable.financier_icon);
+                            } else if (my_posts[i][0].equals("Entrepreneur")) {
+                                imageView.setImageResource(R.drawable.entrepreneur_icon);
                             }
-                            project_status.setText(my_posts[my_post_j][0]);
-                            name.setText(my_posts[my_post_j][1]);
-                            amount_to_be_collected.setText(my_posts[my_post_j][2]);
-                            project_user.setText(my_posts[my_post_j][3]);
-                            full_presentation.setText(my_posts[my_post_j][4]);
-                            type.setText(my_posts[my_post_j][5]);
+                            innerLinearLayout.addView(imageView);
+
+// Create and add inner LinearLayout for text
+                            LinearLayout textLinearLayout = new LinearLayout(profile.this);
+                            LinearLayout.LayoutParams textLayoutParams = new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            );
+                            textLinearLayout.setLayoutParams(textLayoutParams);
+                            textLinearLayout.setOrientation(LinearLayout.VERTICAL);
+                            textLinearLayout.setPadding(5, 5, 5, 5); // left, top, right, bottom
+
+// Create and add TextViews
+                            TextView projectNameTextView = new TextView(profile.this);
+                            projectNameTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+
+                            projectNameTextView.setText(my_posts[i][1]);
+                            projectNameTextView.setTextSize(35);
+                            projectNameTextView.setTextColor(getResources().getColor(R.color.blue));
+                            textLinearLayout.addView(projectNameTextView);
+
+                            TextView projectTypeTextView = new TextView(profile.this);
+                            projectTypeTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            projectTypeTextView.setText(my_posts[i][5]);
+                            projectTypeTextView.setTextSize(20);
+                            projectTypeTextView.setTextColor(getResources().getColor(R.color.blue));
+                            textLinearLayout.addView(projectTypeTextView);
+
+                            innerLinearLayout.addView(textLinearLayout);
+                            outerLinearLayout.addView(innerLinearLayout);
+
+// Create and add other TextViews
+                            TextView projectUserTextView = new TextView(profile.this);
+                            projectUserTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            projectUserTextView.setText(my_posts[i][3]);
+                            projectUserTextView.setTextSize(25);
+                            projectUserTextView.setTextColor(getResources().getColor(R.color.blue));
+                            outerLinearLayout.addView(projectUserTextView);
+
+                            TextView projectstatusTextView = new TextView(profile.this);
+                            projectstatusTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            projectstatusTextView.setText(my_posts[i][0]);
+                            projectstatusTextView.setTextSize(25);
+                            projectstatusTextView.setTextColor(getResources().getColor(R.color.blue));
+                            outerLinearLayout.addView(projectstatusTextView);
+
+                            TextView projectpresentationTextView = new TextView(profile.this);
+                            projectpresentationTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            projectpresentationTextView.setText(my_posts[i][4]);
+                            projectpresentationTextView.setTextSize(25);
+                            projectpresentationTextView.setTextColor(getResources().getColor(R.color.blue));
+                            outerLinearLayout.addView(projectpresentationTextView);
+
+                            TextView projectamountTextView = new TextView(profile.this);
+                            projectamountTextView.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            projectamountTextView.setText(my_posts[i][2]);
+                            projectamountTextView.setTextSize(20);
+                            projectamountTextView.setTextColor(getResources().getColor(R.color.blue));
+                            outerLinearLayout.addView(projectamountTextView);
+
+// Similarly, create and add other TextViews
+
+// Create LinearLayout for Button
+                            LinearLayout buttonLinearLayout = new LinearLayout(profile.this);
+                            buttonLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            ));
+                            buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+
+                            Button moreButton = new Button(profile.this);
+                            moreButton.setLayoutParams(new LinearLayout.LayoutParams(
+                                    650, // width
+                                    100 // height
+                            ));
+                            moreButton.setText("More");
+                            moreButton.setTextColor(getResources().getColor(R.color.black));
+                            moreButton.setBackgroundTintList(getResources().getColorStateList(R.color.light_gray));
+
+                            buttonLinearLayout.addView(moreButton);
+
+                            outerLinearLayout.addView(buttonLinearLayout);
+
+// Add the outer LinearLayout to the main layout
+                            projectLayout1.addView(outerLinearLayout);
+
+                            project_layout.addView(projectLayout1);
+
+                        }
+
                     }
                     status_btn = "show";
                 } else if (status_btn == "show"){
-                    next_post.setVisibility(View.INVISIBLE);
-                    previous_post.setVisibility(View.INVISIBLE);
                     project_layout.setVisibility(View.INVISIBLE);
                     status_btn = "hide";
-                    my_post_j = -1;
                     see_my_post.setBackgroundColor(getResources().getColor(R.color.gray));
                 }
             }
         });
 
-        next_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (my_post_i != -1 && my_post_j < my_post_i) {
-                    my_post_j++;
-                    if (my_post_j < my_posts.length) {
-                        if (my_posts[my_post_j][0].equals("Financier")) {
-                            project_icon.setImageResource(R.drawable.financier_icon);
-                        } else {
-                            project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                        }
-                        project_status.setText(my_posts[my_post_j][0]);
-                        name.setText(my_posts[my_post_j][1]);
-                        amount_to_be_collected.setText(my_posts[my_post_j][2]);
-                        project_user.setText(my_posts[my_post_j][3]);
-                        full_presentation.setText(my_posts[my_post_j][4]);
-                        type.setText(my_posts[my_post_j][5]);
-                    }
-                }
-                previous_post.setVisibility(View.VISIBLE);
-                if (my_post_j >= my_post_i - 1) {
-                    next_post.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-
-        previous_post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (my_post_i != -1 && my_post_j > 0) {
-                    my_post_j--;
-                    if (my_post_j >= 0) {
-                        if (my_posts[my_post_j][0].equals("Financier")) {
-                            project_icon.setImageResource(R.drawable.financier_icon);
-                        } else {
-                            project_icon.setImageResource(R.drawable.entrepreneur_icon);
-                        }
-                        project_status.setText(my_posts[my_post_j][0]);
-                        name.setText(my_posts[my_post_j][1]);
-                        amount_to_be_collected.setText(my_posts[my_post_j][2]);
-                        project_user.setText(my_posts[my_post_j][3]);
-                        full_presentation.setText(my_posts[my_post_j][4]);
-                        type.setText(my_posts[my_post_j][5]);
-                    }
-                }
-                next_post.setVisibility(View.VISIBLE);
-                if (my_post_j <= 0) {
-                    previous_post.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
 
     }
 }

@@ -19,16 +19,16 @@ import org.w3c.dom.Text;
 
 public class plus extends AppCompatActivity {
 
-    EditText project_name, project_amount, full_presentation_of_the_project, project_user;
-    public static String[][] business_projects = new String[100][7];
-    public static String[][] tourism_projects = new String[100][7];
-    public static String[][] solar_energy_projects = new String[100][7];
-    public static String[][] education_projects = new String[100][7];
-    public static String[][] agriculture_projects = new String[100][7];
-    public static String[][] ecology_projects = new String[100][7];
-    public static String[][] my_posts = new String[100][7];
+    EditText project_name, project_amount, full_presentation_of_the_project, project_user, your_number, instagram_nick, facebook_nick, telegram_nick;
+    public static String[][] business_projects = new String[100][10];
+    public static String[][] tourism_projects = new String[100][10];
+    public static String[][] solar_energy_projects = new String[100][10];
+    public static String[][] education_projects = new String[100][10];
+    public static String[][] agriculture_projects = new String[100][10];
+    public static String[][] ecology_projects = new String[100][10];
+    public static String[][] my_posts = new String[100][10];
 
-    public static String[][] oll_posts = new String[100][7];
+    public static String[][] oll_posts = new String[100][10];
 
     final String[] moneys = {"$", "֏", "₽", "€"};
 
@@ -54,10 +54,11 @@ public class plus extends AppCompatActivity {
 
     String status = "none";
     String project_type = "none";
+    String social_networks = "";
 
     public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count, oll_post_count = 0;
 
-    Button financier, entrepreneur, business, tourism, solar_energy, education, agriculture, ecology, new_post;
+    Button financier, entrepreneur, business, tourism, solar_energy, education, agriculture, ecology, new_post, instagram, facebook, telegram;
 
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
@@ -75,6 +76,10 @@ public class plus extends AppCompatActivity {
         project_amount = findViewById(R.id.project_amount);
         full_presentation_of_the_project = findViewById(R.id.full_idea);
         project_user = findViewById(R.id.project_user);
+        instagram_nick = findViewById(R.id.instagram_nick);
+        facebook_nick = findViewById(R.id.facebook_nick);
+        telegram_nick = findViewById(R.id.telegram_nick);
+        your_number = findViewById(R.id.my_number);
 
         //project types
         business = findViewById(R.id.business_type);
@@ -88,6 +93,46 @@ public class plus extends AppCompatActivity {
         new_post = findViewById(R.id.new_post_btn);
 
         Button money = findViewById(R.id.money);
+        instagram = findViewById(R.id.instagram);
+        facebook = findViewById(R.id.facebook);
+        telegram = findViewById(R.id.telegram);
+
+        instagram_nick.setVisibility(View.INVISIBLE);
+        facebook_nick.setVisibility(View.INVISIBLE);
+        telegram_nick.setVisibility(View.INVISIBLE);
+
+        instagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if ("instagram".contains(social_networks)) {
+                    instagram.setBackgroundColor(getResources().getColor(R.color.blue));
+                    social_networks = social_networks +  " instagram";
+                    instagram_nick.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if ("facebook".contains(social_networks)) {
+                    facebook.setBackgroundColor(getResources().getColor(R.color.blue));
+                    social_networks = social_networks + " facebook";
+                    facebook_nick.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        telegram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if ("telegram".contains(social_networks)) {
+                    telegram.setBackgroundColor(getResources().getColor(R.color.blue));
+                    social_networks = social_networks + " telegram";
+                    telegram_nick.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         financier.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +148,10 @@ public class plus extends AppCompatActivity {
             public void onClick(View view) {
                 entrepreneur.setBackgroundColor(getResources().getColor(R.color.blue));
                 financier.setBackgroundColor(getResources().getColor(R.color.black));
-                status = "Entrepreneur";
+                status = "Innovator";
             }
         });
+
 
         //set project type
 
@@ -190,8 +236,8 @@ public class plus extends AppCompatActivity {
         new_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_amount.getText().toString().matches("\\d+") && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none"){
-                    if (project_type.equals("Business")){
+                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_amount.getText().toString().matches("\\d+") && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none" && your_number.getText().toString().length() != 0) {
+                    if (project_type.equals("Business")) {
                         business_i++;
                         business_projects[business_i][0] = status;
                         business_projects[business_i][1] = project_name.getText().toString();
@@ -199,9 +245,11 @@ public class plus extends AppCompatActivity {
                         business_projects[business_i][3] = project_user.getText().toString();
                         business_projects[business_i][4] = full_presentation_of_the_project.getText().toString();
                         business_projects[business_i][5] = project_type;
+                        business_projects[business_i][6] = your_number.getText().toString();
+
                         business_post_count++;
 
-                    } else if (project_type.equals("Tourism")){
+                    } else if (project_type.equals("Tourism")) {
                         tourism_i++;
                         tourism_projects[tourism_i][0] = status;
                         tourism_projects[tourism_i][1] = project_name.getText().toString();
@@ -209,9 +257,11 @@ public class plus extends AppCompatActivity {
                         tourism_projects[tourism_i][3] = project_user.getText().toString();
                         tourism_projects[tourism_i][4] = full_presentation_of_the_project.getText().toString();
                         tourism_projects[tourism_i][5] = project_type;
+                        tourism_projects[tourism_i][6] = your_number.getText().toString();
+
                         tourism_post_count++;
 
-                    }else if (project_type.equals("Solar Energy")){
+                    } else if (project_type.equals("Solar Energy")) {
                         solar_energy_i++;
                         solar_energy_projects[solar_energy_i][0] = status;
                         solar_energy_projects[solar_energy_i][1] = project_name.getText().toString();
@@ -219,9 +269,11 @@ public class plus extends AppCompatActivity {
                         solar_energy_projects[solar_energy_i][3] = project_user.getText().toString();
                         solar_energy_projects[solar_energy_i][4] = full_presentation_of_the_project.getText().toString();
                         solar_energy_projects[solar_energy_i][5] = project_type;
+                        solar_energy_projects[solar_energy_i][6] = your_number.getText().toString();
+
                         solar_energy_post_count++;
 
-                    } else if (project_type.equals("Education")){
+                    } else if (project_type.equals("Education")) {
                         education_i++;
                         education_projects[education_i][0] = status;
                         education_projects[education_i][1] = project_name.getText().toString();
@@ -229,9 +281,10 @@ public class plus extends AppCompatActivity {
                         education_projects[education_i][3] = project_user.getText().toString();
                         education_projects[education_i][4] = full_presentation_of_the_project.getText().toString();
                         education_projects[education_i][5] = project_type;
+                        education_projects[education_i][6] = your_number.getText().toString();
                         education_post_count++;
 
-                    } else if (project_type.equals("Agriculture")){
+                    } else if (project_type.equals("Agriculture")) {
                         agriculture_i++;
                         agriculture_projects[agriculture_i][0] = status;
                         agriculture_projects[agriculture_i][1] = project_name.getText().toString();
@@ -239,9 +292,10 @@ public class plus extends AppCompatActivity {
                         agriculture_projects[agriculture_i][3] = project_user.getText().toString();
                         agriculture_projects[agriculture_i][4] = full_presentation_of_the_project.getText().toString();
                         agriculture_projects[agriculture_i][5] = project_type;
+                        agriculture_projects[agriculture_i][6] = your_number.getText().toString();
                         agriculture_post_count++;
 
-                    } else if (project_type.equals("Ecology")){
+                    } else if (project_type.equals("Ecology")) {
                         ecology_i++;
                         ecology_projects[ecology_i][0] = status;
                         ecology_projects[ecology_i][1] = project_name.getText().toString();
@@ -249,10 +303,11 @@ public class plus extends AppCompatActivity {
                         ecology_projects[ecology_i][3] = project_user.getText().toString();
                         ecology_projects[ecology_i][4] = full_presentation_of_the_project.getText().toString();
                         ecology_projects[ecology_i][5] = project_type;
+                        ecology_projects[ecology_i][6] = your_number.getText().toString();
                         ecology_post_count++;
                     }
 
-                    if (project_user.getText().toString().equals(my_user_name)){
+                    if (project_user.getText().toString().equals(my_user_name)) {
                         my_post_i++;
                         my_post_count++;
                         my_posts[my_post_i][0] = status;
@@ -261,6 +316,8 @@ public class plus extends AppCompatActivity {
                         my_posts[my_post_i][3] = project_user.getText().toString();
                         my_posts[my_post_i][4] = full_presentation_of_the_project.getText().toString();
                         my_posts[my_post_i][5] = project_type;
+                        my_posts[my_post_i][6] = your_number.getText().toString();
+
                     }
 
                     business_j = -1;
@@ -278,9 +335,11 @@ public class plus extends AppCompatActivity {
                     oll_posts[oll_post_i][3] = project_user.getText().toString();
                     oll_posts[oll_post_i][4] = full_presentation_of_the_project.getText().toString();
                     oll_posts[oll_post_i][5] = project_type;
+                    oll_posts[oll_post_i][6] = your_number.getText().toString();
                     oll_post_count = business_post_count + tourism_post_count + solar_energy_post_count + education_post_count + agriculture_post_count + ecology_post_count;
 
                     startActivity(new Intent(plus.this, Home.class));
+
                 } else if (project_name.getText().toString().length() == 0){
                     project_name.setText("");
                     project_name.setHint("This line can't be empty");
