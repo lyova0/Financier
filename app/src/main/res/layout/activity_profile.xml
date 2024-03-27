@@ -5,74 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Home"
-    android:background="@drawable/profile">
-
-    <TextView
-        android:layout_width="198dp"
-        android:layout_height="74dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="80dp"
-        android:fontFamily="sans-serif-black"
-        android:text="This is your account for Financier"
-        android:textColor="@color/start_color"
-        android:textSize="20dp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/see_my_posts"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/gray"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="10dp"
-        android:text="See my posts"
-        android:textColor="@color/white"/>
+    android:background="@color/white">
 
     <ScrollView
-        android:layout_width="407dp"
-        android:layout_height="432dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="250dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/oll_posts"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/white">
+            <Button
+                android:id="@+id/see_my_posts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/gray"
+                android:layout_marginLeft="10dp"
+                android:text="See my posts"
+                android:textColor="@color/white"/>
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="248dp">
+
+                <LinearLayout
+                    android:id="@+id/oll_posts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/see_my_save_posts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="@color/gray"
+                android:text="See my save posts"
+                android:textColor="@color/white" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="299dp">
+
+                <LinearLayout
+                    android:id="@+id/save_posts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </ScrollView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+
+
+                <ImageButton
+                    android:id="@+id/home_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="100dp"
+                    android:background="@drawable/home_first"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageButton
+                    android:id="@+id/plus_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/plus_icon_first"
+                    android:contentDescription="@string/app_name" />
+
+                <ImageButton
+                    android:id="@+id/profile_btn"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/profile_first"
+                    android:contentDescription="@string/app_name" />
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
-
-
-        <ImageButton
-            android:id="@+id/home_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/home_first"
-            android:contentDescription="@string/app_name" />
-
-        <ImageButton
-            android:id="@+id/plus_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/plus_icon_first"
-            android:contentDescription="@string/app_name" />
-
-        <ImageButton
-            android:id="@+id/profile_btn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/profile_first"
-            android:contentDescription="@string/app_name" />
-    </LinearLayout>
 
 
 </RelativeLayout>

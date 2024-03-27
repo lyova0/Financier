@@ -74,5 +74,38 @@
         android:layout_marginTop="450dp"
         android:textColor="@color/gray" />
 
+    <TextView
+        android:id="@+id/post_instagram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post user number"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="500dp"
+        android:textColor="@color/gray" />
+
+    <TextView
+        android:id="@+id/post_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post user number"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="530dp"
+        android:textColor="@color/gray" />
+
+    <TextView
+        android:id="@+id/post_telegram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post user number"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="560dp"
+        android:textColor="@color/gray" />
+
 
 </RelativeLayout>

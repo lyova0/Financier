@@ -28,7 +28,9 @@ public class plus extends AppCompatActivity {
     public static String[][] ecology_projects = new String[100][10];
     public static String[][] my_posts = new String[100][10];
 
-    public static String[][] oll_posts = new String[100][10];
+    public static String[][] oll_posts = new String[100][11];
+
+    public static String[][] save_posts = new String[100][11];
 
     final String[] moneys = {"$", "֏", "₽", "€"};
 
@@ -42,6 +44,7 @@ public class plus extends AppCompatActivity {
     public static int agriculture_i = -1;
     public static int ecology_i = -1;
     public static int my_post_i = -1;
+    public static int save_posts_i = -1;
 
     public static int business_j = -1;
     public static int tourism_j = -1;
@@ -54,9 +57,11 @@ public class plus extends AppCompatActivity {
 
     String status = "none";
     String project_type = "none";
-    String social_networks = "";
+    String[] social_networks = new String[3];
 
-    public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count, oll_post_count = 0;
+    boolean instagram_, facebook_, telegram_ = false;
+
+    public static int my_post_count, business_post_count, tourism_post_count, solar_energy_post_count, education_post_count, ecology_post_count, agriculture_post_count, oll_post_count, save_post = 0;
 
     Button financier, entrepreneur, business, tourism, solar_energy, education, agriculture, ecology, new_post, instagram, facebook, telegram;
 
@@ -101,35 +106,68 @@ public class plus extends AppCompatActivity {
         facebook_nick.setVisibility(View.INVISIBLE);
         telegram_nick.setVisibility(View.INVISIBLE);
 
+        String[] show2 = {"show"};
+
         instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ("instagram".contains(social_networks)) {
+                if (show2[0].equals("show")){
+                    instagram_ = true;
+                    show2[0] = "hight";
+                } else {
+                    show2[0] = "show";
+                    instagram_ = false;
+                }
+                if (instagram_) {
                     instagram.setBackgroundColor(getResources().getColor(R.color.blue));
-                    social_networks = social_networks +  " instagram";
                     instagram_nick.setVisibility(View.VISIBLE);
+                } else {
+                    instagram.setBackgroundColor(getResources().getColor(R.color.black));
+                    instagram_nick.setVisibility(View.INVISIBLE);
                 }
             }
         });
+
+        String[] show1 = {"show"};
 
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ("facebook".contains(social_networks)) {
+                if (show1[0].equals("show")){
+                    facebook_ = true;
+                    show1[0] = "hight";
+                } else {
+                    show1[0] = "show";
+                    facebook_ = false;
+                }
+                if (facebook_) {
                     facebook.setBackgroundColor(getResources().getColor(R.color.blue));
-                    social_networks = social_networks + " facebook";
                     facebook_nick.setVisibility(View.VISIBLE);
+                } else {
+                    facebook.setBackgroundColor(getResources().getColor(R.color.black));
+                    facebook_nick.setVisibility(View.INVISIBLE);
                 }
             }
         });
 
+        String[] show = {"show"};
+
         telegram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if ("telegram".contains(social_networks)) {
+                if (show[0].equals("show")){
+                    telegram_ = true;
+                    show[0] = "hight";
+                } else {
+                    show[0] = "show";
+                    telegram_ = false;
+                }
+                if (telegram_) {
                     telegram.setBackgroundColor(getResources().getColor(R.color.blue));
-                    social_networks = social_networks + " telegram";
                     telegram_nick.setVisibility(View.VISIBLE);
+                } else {
+                    telegram.setBackgroundColor(getResources().getColor(R.color.black));
+                    telegram_nick.setVisibility(View.INVISIBLE);
                 }
             }
         });
@@ -236,7 +274,7 @@ public class plus extends AppCompatActivity {
         new_post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_amount.getText().toString().matches("\\d+") && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none" && your_number.getText().toString().length() != 0) {
+                if (status != "none" && project_name.getText().toString().length() != 0 && project_amount.getText().toString().length() != 0 && project_amount.getText().toString().matches("\\d+") && project_user.getText().toString().length() != 0 && full_presentation_of_the_project.getText().toString().length() != 0 && project_type != "none" && your_number.getText().toString().length() != 0 && ((instagram_) && (instagram_nick.getText().toString().length() > 0)) && ((facebook_) && (facebook_nick.getText().toString().length() > 0)) && ((telegram_) && (telegram_nick.getText().toString().length() > 0))) {
                     if (project_type.equals("Business")) {
                         business_i++;
                         business_projects[business_i][0] = status;
@@ -246,6 +284,16 @@ public class plus extends AppCompatActivity {
                         business_projects[business_i][4] = full_presentation_of_the_project.getText().toString();
                         business_projects[business_i][5] = project_type;
                         business_projects[business_i][6] = your_number.getText().toString();
+
+                        if (instagram_ == true){
+                            business_projects[business_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            business_projects[business_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            business_projects[business_i][9] = telegram_nick.getText().toString();
+                        }
 
                         business_post_count++;
 
@@ -259,6 +307,16 @@ public class plus extends AppCompatActivity {
                         tourism_projects[tourism_i][5] = project_type;
                         tourism_projects[tourism_i][6] = your_number.getText().toString();
 
+                        if (instagram_ == true){
+                            tourism_projects[tourism_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            tourism_projects[tourism_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            tourism_projects[tourism_i][9] = telegram_nick.getText().toString();
+                        }
+
                         tourism_post_count++;
 
                     } else if (project_type.equals("Solar Energy")) {
@@ -271,6 +329,16 @@ public class plus extends AppCompatActivity {
                         solar_energy_projects[solar_energy_i][5] = project_type;
                         solar_energy_projects[solar_energy_i][6] = your_number.getText().toString();
 
+                        if (instagram_ == true){
+                            solar_energy_projects[solar_energy_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            solar_energy_projects[solar_energy_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            solar_energy_projects[solar_energy_i][9] = telegram_nick.getText().toString();
+                        }
+
                         solar_energy_post_count++;
 
                     } else if (project_type.equals("Education")) {
@@ -282,6 +350,17 @@ public class plus extends AppCompatActivity {
                         education_projects[education_i][4] = full_presentation_of_the_project.getText().toString();
                         education_projects[education_i][5] = project_type;
                         education_projects[education_i][6] = your_number.getText().toString();
+
+                        if (instagram_ == true){
+                            education_projects[education_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            education_projects[education_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            education_projects[education_i][9] = telegram_nick.getText().toString();
+                        }
+
                         education_post_count++;
 
                     } else if (project_type.equals("Agriculture")) {
@@ -293,6 +372,17 @@ public class plus extends AppCompatActivity {
                         agriculture_projects[agriculture_i][4] = full_presentation_of_the_project.getText().toString();
                         agriculture_projects[agriculture_i][5] = project_type;
                         agriculture_projects[agriculture_i][6] = your_number.getText().toString();
+
+                        if (instagram_ == true){
+                            agriculture_projects[agriculture_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            agriculture_projects[agriculture_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            agriculture_projects[agriculture_i][9] = telegram_nick.getText().toString();
+                        }
+
                         agriculture_post_count++;
 
                     } else if (project_type.equals("Ecology")) {
@@ -304,6 +394,17 @@ public class plus extends AppCompatActivity {
                         ecology_projects[ecology_i][4] = full_presentation_of_the_project.getText().toString();
                         ecology_projects[ecology_i][5] = project_type;
                         ecology_projects[ecology_i][6] = your_number.getText().toString();
+
+                        if (instagram_ == true){
+                            ecology_projects[ecology_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            ecology_projects[ecology_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            ecology_projects[ecology_i][9] = telegram_nick.getText().toString();
+                        }
+
                         ecology_post_count++;
                     }
 
@@ -317,6 +418,16 @@ public class plus extends AppCompatActivity {
                         my_posts[my_post_i][4] = full_presentation_of_the_project.getText().toString();
                         my_posts[my_post_i][5] = project_type;
                         my_posts[my_post_i][6] = your_number.getText().toString();
+
+                        if (instagram_ == true){
+                            my_posts[my_post_i][7] = instagram_nick.getText().toString();
+                        }
+                        if (facebook_ == true){
+                            my_posts[my_post_i][8] = facebook_nick.getText().toString();
+                        }
+                        if (telegram_ == true){
+                            my_posts[my_post_i][9] = telegram_nick.getText().toString();
+                        }
 
                     }
 
@@ -336,6 +447,17 @@ public class plus extends AppCompatActivity {
                     oll_posts[oll_post_i][4] = full_presentation_of_the_project.getText().toString();
                     oll_posts[oll_post_i][5] = project_type;
                     oll_posts[oll_post_i][6] = your_number.getText().toString();
+                    if (instagram_ == true){
+                        oll_posts[oll_post_i][7] = instagram_nick.getText().toString();
+                    }
+                    if (facebook_ == true){
+                        oll_posts[oll_post_i][8] = facebook_nick.getText().toString();
+                    }
+                    if (telegram_ == true){
+                        oll_posts[oll_post_i][9] = telegram_nick.getText().toString();
+                    }
+                    oll_posts[oll_post_i][10] = "null";
+
                     oll_post_count = business_post_count + tourism_post_count + solar_energy_post_count + education_post_count + agriculture_post_count + ecology_post_count;
 
                     startActivity(new Intent(plus.this, Home.class));

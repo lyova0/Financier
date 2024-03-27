@@ -16,6 +16,9 @@ import static com.example.financier.plus.education_i;
 import static com.example.financier.plus.my_post_j;
 import static com.example.financier.plus.oll_post_count;
 import static com.example.financier.plus.oll_posts;
+import static com.example.financier.plus.save_post;
+import static com.example.financier.plus.save_posts;
+import static com.example.financier.plus.save_posts_i;
 import static com.example.financier.plus.solar_energy_i;
 import static com.example.financier.plus.solar_energy_post_count;
 import static com.example.financier.plus.tourism_i;
@@ -64,6 +67,9 @@ public class Home extends AppCompatActivity {
     public static String[] learn_more_post = new String[10];
     public static String learn_more_post_type = "";
     public static int learn_more_post_i = -1;
+    public static int a = 0;
+
+     public final int[] b = {0};
 
     LinearLayout project_layout;
 
@@ -86,7 +92,7 @@ public class Home extends AppCompatActivity {
 // Create the outermost LinearLayout
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                     680, // width
-                    580 // height
+                    630 // height
             );
             layoutParams.setMargins(0, 400, 0, 0); // left, top, right, bottom
             LinearLayout outerLinearLayout = new LinearLayout(Home.this);
@@ -134,13 +140,6 @@ public class Home extends AppCompatActivity {
                     LinearLayout.LayoutParams.WRAP_CONTENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
-
-            // oll_posts[oll_post_i][0] = status;
-//                    oll_posts[oll_post_i][1] = project_name.getText().toString();
-//                    oll_posts[oll_post_i][2] = project_amount.getText().toString() + money.getText().toString();
-//                    oll_posts[oll_post_i][3] = project_user.getText().toString();
-//                    oll_posts[oll_post_i][4] = full_presentation_of_the_project.getText().toString();
-//                    oll_posts[oll_post_i][5] = project_type;
 
             projectNameTextView.setText(oll_posts[i][1]);
             projectNameTextView.setTextSize(35);
@@ -209,7 +208,7 @@ public class Home extends AppCompatActivity {
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT
             ));
-            buttonLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            buttonLinearLayout.setOrientation(LinearLayout.VERTICAL);
 
             Button moreButton = new Button(Home.this);
             moreButton.setLayoutParams(new LinearLayout.LayoutParams(
@@ -221,6 +220,47 @@ public class Home extends AppCompatActivity {
             moreButton.setBackgroundTintList(getResources().getColorStateList(R.color.light_gray));
 
             buttonLinearLayout.addView(moreButton);
+            Button saveButton = new Button(Home.this);
+            saveButton.setLayoutParams(new LinearLayout.LayoutParams(
+                    100, // width
+                    100 // height
+            ));
+            if (oll_posts[i][10].equals("save")){
+                saveButton.setBackgroundResource(R.drawable.bookmark_1);
+                b[0] = 1;
+            } else {
+                saveButton.setBackgroundResource(R.drawable.bookmark);
+                b[0] = 0;
+            }
+
+            int finalI = i;
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (b[0] == 0){
+                        saveButton.setBackgroundResource(R.drawable.bookmark_1);
+                        b[0] = 1;
+                        save_posts_i++;
+                        save_posts[save_posts_i][0] = oll_posts[finalI][0];
+                        save_posts[save_posts_i][1] = oll_posts[finalI][1];
+                        save_posts[save_posts_i][2] = oll_posts[finalI][2];
+                        save_posts[save_posts_i][3] = oll_posts[finalI][3];
+                        save_posts[save_posts_i][4] = oll_posts[finalI][4];
+                        save_posts[save_posts_i][5] = oll_posts[finalI][5];
+                        save_posts[save_posts_i][6] = oll_posts[finalI][6];
+                        save_posts[save_posts_i][7] = oll_posts[finalI][7];
+                        save_posts[save_posts_i][8] = oll_posts[finalI][8];
+                        save_posts[save_posts_i][9] = oll_posts[finalI][9];
+                        save_posts[save_posts_i][10] = "save";
+                        oll_posts[finalI][10] = "save";
+                        save_post++;
+
+                    }
+                }
+            });
+
+            buttonLinearLayout.addView(saveButton);
 
             outerLinearLayout.addView(buttonLinearLayout);
 
