@@ -256,6 +256,24 @@ public class Home extends AppCompatActivity {
                         oll_posts[finalI][10] = "save";
                         save_post++;
 
+                    } else if (b[0] == 1){
+                        saveButton.setBackgroundResource(R.drawable.bookmark);
+                        b[0] = 0;
+                        save_posts[save_posts_i][0] = "null";
+                        save_posts[save_posts_i][1] = "null";
+                        save_posts[save_posts_i][2] = "null";
+                        save_posts[save_posts_i][3] = "null";
+                        save_posts[save_posts_i][4] = "null";
+                        save_posts[save_posts_i][5] = "null";
+                        save_posts[save_posts_i][6] = "null";
+                        save_posts[save_posts_i][7] = "null";
+                        save_posts[save_posts_i][8] = "null";
+                        save_posts[save_posts_i][9] = "null";
+                        save_posts[save_posts_i][10] = "null";
+                        oll_posts[finalI][10] = "null";
+                        save_posts_i--;
+                        save_post--;
+
                     }
                 }
             });
